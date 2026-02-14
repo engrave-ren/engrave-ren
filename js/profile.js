@@ -14,13 +14,17 @@ const COMMENT_CONFIG = {
 // 获取URL参数
 function getUrlParam(param) {
     const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get(param);
+    const value = urlParams.get(param);
+    console.log('getUrlParam:', param, value);  // 调试
+    return value;
 }
 
 // 获取人物ID
 function getProfileId() {
     const profileId = getUrlParam('id') || getUrlParam('name');
-    return profileId ? profileId.toLowerCase().replace(/\s+/g, '-') : '';
+    const result = profileId ? profileId.toLowerCase().replace(/\s+/g, '-') : '';
+    console.log('getProfileId:', result);  // 调试
+    return result;
 }
 
 // 渲染评论区域
@@ -71,6 +75,7 @@ function loadUtterances() {
 // 加载个人资料
 async function loadProfile() {
     const profileId = getProfileId();
+    console.log('loadProfile, profileId:', profileId);  // 调试
     
     if (!profileId) {
         showError('未指定人物');
@@ -79,9 +84,13 @@ async function loadProfile() {
     
     try {
         // 加载基本信息
-        const infoResponse = await fetch(`/data/people/${profileId}/info.json`);
+        const infoUrl = `/data/people/${profileId}/info.json`;
+        console.log('Fetching:', infoUrl);  // 调试
+        const infoResponse = await fetch(infoUrl);
+        console.log('Response status:', infoResponse.status);  // 调试
+        
         if (!infoResponse.ok) {
-            showError('未找到该纪念人物');
+            showError('未找到该纪念人物: ' + profileId);
             return;
         }
         const profile = await infoResponse.json();
@@ -89,7 +98,9 @@ async function loadProfile() {
         // 尝试加载生平介绍
         let bio = '';
         try {
-            const bioResponse = await fetch(`/data/people/${profileId}/bio.md`);
+            const bioUrl = `/data/people/${profileId}/bio.md`;
+            console.log('Fetching bio:', bioUrl);  // 调试
+            const bioResponse = await fetch(bioUrl);
             if (bioResponse.ok) {
                 bio = await bioResponse.text();
             }
