@@ -10,8 +10,8 @@ const COMMENT_CONFIG = {
     
     // Utterances 配置 (从 https://utteranc.es 获取)
     utterances: {
-        repo: 'NatsukoYamamura/engrave-ren',           // 如: 'novihare/engrave.ren'
-        issueTerm: 'pathname',
+        repo: 'NatsukoYamamura/engrave-ren',
+        issueTerm: 'url',
         label: 'comment',
         theme: 'github-light'
     },
@@ -113,12 +113,11 @@ function loadUtterances() {
     if (!container) return;
     
     const config = COMMENT_CONFIG.utterances;
-    const profileId = getProfileId() || 'home';
     
     const script = document.createElement('script');
     script.src = 'https://utteranc.es/client.js';
     script.setAttribute('repo', config.repo);
-    script.setAttribute('issue-term', 'pathname');
+    script.setAttribute('issue-term', config.issueTerm);
     script.setAttribute('label', config.label);
     script.setAttribute('theme', config.theme);
     script.setAttribute('crossorigin', 'anonymous');
