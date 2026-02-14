@@ -197,17 +197,19 @@ function buildPersonHtml(dirname, info, lang) {
             </section>
             <section class="memories-section">
                 <h2 style="text-align: center; margin-bottom: 2rem;">回忆与祝福</h2>
-                <div id="commentsList"></div>
                 <div class="add-memory-form">
                     <h3 style="margin-bottom: 1rem;">发表回忆</h3>
                     <p style="margin-bottom: 1rem; color: var(--text-light);">
                         由于是静态网站，评论功能需要 GitHub 账号
                     </p>
-                    <a href="https://github.com/NatsukoYamamura/engrave-ren/discussions/new?category=general&title=${encodeURIComponent('【纪念】' + name)}" 
+                    <a href="https://github.com/NatsukoYamamura/engrave-ren/discussions" 
                        target="_blank" 
                        class="btn">
                         💬 在 GitHub 发表评论
                     </a>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-light);">
+                        标题格式：【纪念】人物姓名
+                    </p>
                 </div>
             </section>
             <section class="prevention-section">
@@ -220,38 +222,6 @@ function buildPersonHtml(dirname, info, lang) {
     <footer>
         <p>&copy; 2025 星语铭 | 由 <a href="https://novihare.cn/">Novi的导航站</a> 提供技术支持</p>
     </footer>
-    <script>
-    const REPO_OWNER = 'NatsukoYamamura';
-    const REPO_NAME = 'engrave-ren';
-    const PERSON_NAME = '${name}';
-    
-    async function loadComments() {
-        const list = document.getElementById('commentsList');
-        try {
-            const response = await fetch(\`https://api.github.com/repos/\${REPO_OWNER}/\${REPO_NAME}/issues?labels=纪念&\`);
-            if (!response.ok) throw new Error('Failed to load');
-            const issues = await response.json();
-            const filtered = issues.filter(i => i.title.includes(PERSON_NAME));
-            
-            if (filtered.length === 0) {
-                list.innerHTML = '<p style="color: var(--text-light); text-align: center;">暂无回忆，快来发表第一条吧！</p>';
-                return;
-            }
-            
-            list.innerHTML = filtered.map(issue => \`
-                <div class="memory-item">
-                    <p>\${issue.body}</p>
-                    <small style="color: var(--text-light);">
-                        —— \${issue.user.login} · \${new Date(issue.created_at).toLocaleDateString('zh-CN')}
-                    </small>
-                </div>
-            \`).join('');
-        } catch (e) {
-            list.innerHTML = '<p style="color: var(--text-light); text-align: center;">加载评论失败，请直接在 GitHub 发表评论</p>';
-        }
-    }
-    loadComments();
-    </script>
 </body>
 </html>`;
 }
