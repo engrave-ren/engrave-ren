@@ -228,6 +228,12 @@ function parseMarkdown(text) {
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;');
     
+    // 链接 [text](url)
+    html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" style="color: var(--sky-blue);">$1</a>');
+    
+    // 图片 ![alt](url)
+    html = html.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" style="max-width: 100%; border-radius: 8px; margin: 1rem 0;">');
+    
     html = html.replace(/^### (.*$)/gim, '<h3>$1</h3>');
     html = html.replace(/^## (.*$)/gim, '<h2>$1</h2>');
     html = html.replace(/^# (.*$)/gim, '<h1>$1</h1>');
@@ -249,6 +255,8 @@ function parseMarkdown(text) {
     html = html.replace(/(<\/blockquote>)<\/p>/g, '$1');
     html = html.replace(/<p>(<li>)/g, '$1');
     html = html.replace(/(<\/li>)<\/p>/g, '$1');
+    html = html.replace(/<p>(<img)/g, '$1');
+    html = html.replace(/(<img[^>]*>)<\/p>/g, '$1');
     
     return html;
 }
