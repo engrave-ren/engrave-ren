@@ -7,10 +7,20 @@ async function loadAllProfiles() {
         const listResponse = await fetch('/data/profiles.json');
         const profileIds = await listResponse.json();
         
+        if (!Array.isArray(profileIds)) {
+            console.error('profiles.json 格式错误');
+            return [];
+        }
+        
         // 并行加载所有人物的基本信息
         const profilePromises = profileIds.map(async (id) => {
+            if (!id) return null;
             try {
                 const response = await fetch(`/data/people/${id}/info.json`);
+                if (!response.ok) {
+                    console.error(`加载 ${id} 失败: HTTP ${response.status}`);
+                    return null;
+                }
                 return await response.json();
             } catch (e) {
                 console.error(`加载 ${id} 失败:`, e);
@@ -19,7 +29,7 @@ async function loadAllProfiles() {
         });
         
         const profiles = await Promise.all(profilePromises);
-        return profiles.filter(p => p !== null);
+        return profiles.filter(p => p !== null && p.id);
     } catch (error) {
         console.error('加载人物列表失败:', error);
         return [];
@@ -78,6 +88,8 @@ function renderProfiles(profiles) {
 
 // 生成简介文字
 function generateBio(profile) {
+    if (!profile) return '点击查看详情';
+    
     const bioParts = [];
     
     if (profile.handle) {
@@ -88,18 +100,19 @@ function generateBio(profile) {
         bioParts.push(profile.location);
     }
     
-    if (profile.passDate && profile.passDate !== '不详') {
-        if (/^\d{4}$/.test(profile.passDate)) {
-            bioParts.push(`${profile.passDate}年离开`);
-        } else if (profile.passDate.includes('-')) {
-            const parts = profile.passDate.split('-');
+    if (profile.passDate) {
+        const passDate = String(profile.passDate);
+        if (/^\d{4}$/.test(passDate)) {
+            bioParts.push(`${passDate}年离开`);
+        } else if (passDate.includes('-')) {
+            const parts = passDate.split('-');
             if (/^\d{4}$/.test(parts[0])) {
                 bioParts.push(`${parts[0]}年离开`);
             } else {
-                bioParts.push(profile.passDate);
+                bioParts.push(passDate);
             }
         } else {
-            bioParts.push(profile.passDate);
+            bioParts.push(passDate);
         }
     }
     
