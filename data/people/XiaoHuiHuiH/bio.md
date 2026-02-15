@@ -42,10 +42,3 @@
 
 愿她在没有药片、没有凝视、没有"跨性别"标签的世界里，终于可以轻松地做自己——一个快乐、抽象、自由自在的女孩。
 
----
-
-## 她曾存在过的角落
-
-- 哔哩哔哩：https://space.bilibili.com/454615199
-- X（推特）：https://x.com/XiaoHuiHuiH
-- YouTube：https://www.youtube.com/@XiaoHuiHuiH
