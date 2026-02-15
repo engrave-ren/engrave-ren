@@ -23,11 +23,11 @@ https://NatsukoYamamura.github.io/engrave-ren
 ├── images/
 │   └── default-avatar.svg # 默认头像
 └── data/
-    ├── profiles.json      # 纪念人物 ID 列表
+    ├── profiles.json     # 纪念人物 ID 列表
     └── people/
         └── [人物ID]/
             ├── info.json  # 基本信息
-            ├── bio.md     # 生平介绍
+            ├── bio.md    # 生平介绍 (Markdown)
             └── avatar.jpg # 头像图片
 ```
 
@@ -35,30 +35,46 @@ https://NatsukoYamamura.github.io/engrave-ren
 
 1. 在 `data/people/` 下创建新文件夹，文件夹名称即为人物 ID
 2. 创建 `info.json` - 基本信息
-3. 创建 `bio.md` - 生平介绍（支持 Markdown）
+3. 创建 `bio.md` - 生平介绍（支持完整 Markdown 语法）
 4. 添加 `avatar.jpg` - 头像图片（可选）
 
 ### info.json 格式
 
 ```json
 {
-  "id": "gqt",
-  "name": "Ara",
-  "handle": "aragqt",
-  "aliases": "Gqt, Aragqt",
-  "location": "法国巴黎",
-  "birthDate": "2003-02-21",
-  "passDate": "2025-06-22",
-  "website": "https://example.com"
+  "id": "example",
+  "name": "示例人物",
+  "handle": "example",
+  "aliases": "示例",
+  "location": "示例地点",
+  "birthDate": "2000-01-01",
+  "passDate": "2024-01-01",
+  "summary": "一言总结/引用语句",
+  "websites": [
+    "[网站名称](https://example.com)",
+    "[B站](https://bilibili.com)",
+    "[GitHub](https://github.com)"
+  ]
 }
 ```
+
+**字段说明：**
+- `id` - 人物唯一标识（文件夹名称）
+- `name` - 姓名
+- `handle` - 昵称/用户名
+- `aliases` - 别名（多个用逗号分隔）
+- `location` - 地点
+- `birthDate` - 出生日期 (YYYY-MM-DD)
+- `passDate` - 离开日期 (YYYY-MM-DD)
+- `summary` - 一言总结/引用（显示在首页卡片）
+- `websites` - 网站链接数组，格式：`[显示名称](链接)`
 
 ### 更新人物列表
 
 在 `data/profiles.json` 中添加人物 ID：
 
 ```json
-["gqt", "zheermao101", "新人物ID"]
+["example", "gqt", "zhangyubaka", "新人物ID"]
 ```
 
 ## 评论系统
