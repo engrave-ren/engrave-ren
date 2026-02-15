@@ -90,33 +90,12 @@ function renderProfiles(profiles) {
 function generateBio(profile) {
     if (!profile) return '点击查看详情';
     
-    const bioParts = [];
-    
-    if (profile.handle) {
-        bioParts.push(`@${profile.handle}`);
+    // 优先使用 summary
+    if (profile.summary && profile.summary.trim()) {
+        return profile.summary;
     }
     
-    if (profile.location) {
-        bioParts.push(profile.location);
-    }
-    
-    if (profile.passDate) {
-        const passDate = String(profile.passDate);
-        if (/^\d{4}$/.test(passDate)) {
-            bioParts.push(`${passDate}年离开`);
-        } else if (passDate.includes('-')) {
-            const parts = passDate.split('-');
-            if (/^\d{4}$/.test(parts[0])) {
-                bioParts.push(`${parts[0]}年离开`);
-            } else {
-                bioParts.push(passDate);
-            }
-        } else {
-            bioParts.push(passDate);
-        }
-    }
-    
-    return bioParts.join(' · ') || '点击查看详情';
+    return '点击查看详情';
 }
 
 // 搜索功能

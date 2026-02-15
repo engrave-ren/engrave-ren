@@ -129,22 +129,12 @@ async function renderProfile(profile, bio) {
     
     // 网站链接
     let websiteLinks = '';
-    const websites = ['website', 'github', 'twitter', 'bilibili', 'zhihu', 'blog'];
-    const linkLabels = {
-        website: '网站',
-        github: 'GitHub',
-        twitter: 'Twitter',
-        bilibili: 'B站',
-        zhihu: '知乎',
-        blog: '博客'
-    };
-    
-    const links = websites.filter(s => profile[s]).map(s => {
-        return `<a href="${profile[s]}" target="_blank" style="color: var(--sky-blue); margin: 0 0.5rem;">${linkLabels[s]}</a>`;
-    });
-    
-    if (links.length > 0) {
-        websiteLinks = `<div class="profile-info-item"><strong>链接：</strong>${links.join('')}</div>`;
+    if (profile.websites && Array.isArray(profile.websites) && profile.websites.length > 0) {
+        const linksHtml = profile.websites.map(link => {
+            // 将 [名称](链接) 转换为 <a> 标签
+            return link.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" style="color: var(--sky-blue); margin: 0 0.5rem;">$1</a>');
+        }).join(' ');
+        websiteLinks = `<div class="profile-info-item"><strong>链接：</strong>${linksHtml}</div>`;
     }
     
     const content = document.getElementById('profileContent');
@@ -219,46 +209,23 @@ function calculateAge(birthDate, passDate) {
     }
 }
 
-// 简单的 Markdown 解析
+// 使用 marked.js 解析 Markdown
 function parseMarkdown(text) {
     if (!text) return '';
     
-    let html = text
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;');
+    // 配置 marked
+    marked.setOptions({
+        breaks: true,      // 允许换行
+        gfm: true,         // GitHub 风格 Markdown
+        linkTarget: '_blank'  // 链接新窗口打开
+    });
     
-    // 链接 [text](url)
-    html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" style="color: var(--sky-blue);">$1</a>');
-    
-    // 图片 ![alt](url)
-    html = html.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" style="max-width: 100%; border-radius: 8px; margin: 1rem 0;">');
-    
-    html = html.replace(/^### (.*$)/gim, '<h3>$1</h3>');
-    html = html.replace(/^## (.*$)/gim, '<h2>$1</h2>');
-    html = html.replace(/^# (.*$)/gim, '<h1>$1</h1>');
-    
-    html = html.replace(/\*\*\*(.*?)\*\*\*/g, '<strong><em>$1</em></strong>');
-    html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-    html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
-    
-    html = html.replace(/^\&gt; (.*$)/gim, '<blockquote>$1</blockquote>');
-    html = html.replace(/^\- (.*$)/gim, '<li>$1</li>');
-    
-    html = html.replace(/\n\n/g, '</p><p>');
-    html = '<p>' + html + '</p>';
-    
-    html = html.replace(/<p><\/p>/g, '');
-    html = html.replace(/<p>(<h[123]>)/g, '$1');
-    html = html.replace(/(<\/h[123]>)<\/p>/g, '$1');
-    html = html.replace(/<p>(<blockquote>)/g, '$1');
-    html = html.replace(/(<\/blockquote>)<\/p>/g, '$1');
-    html = html.replace(/<p>(<li>)/g, '$1');
-    html = html.replace(/(<\/li>)<\/p>/g, '$1');
-    html = html.replace(/<p>(<img)/g, '$1');
-    html = html.replace(/(<img[^>]*>)<\/p>/g, '$1');
-    
-    return html;
+    // 解析并消毒 HTML
+    const html = marked.parse(text);
+    return DOMPurify.sanitize(html, {
+        ADD_ATTR: ['target'],  // 允许 target 属性
+        ADD_TAGS: ['iframe']  // 允许 iframe
+    });
 }
 
 // 显示错误
