@@ -15,13 +15,7 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     
     <style>
-        body {
-            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.8;
-            color: #333;
-            background-color: #f8f9fa;
-        }
-        
+        /* 合规声明页面专用样式 */
         .compliance-container {
             max-width: 900px;
             margin: 0 auto;
@@ -32,83 +26,83 @@
             text-align: center;
             margin-bottom: 3rem;
             padding-bottom: 2rem;
-            border-bottom: 2px solid #e0e0e0;
+            border-bottom: 2px solid var(--border-light);
         }
         
         .compliance-header h1 {
             font-size: 2rem;
-            color: #1a3a5c;
+            font-weight: 300;
+            background: linear-gradient(45deg, var(--klein-blue), var(--coral-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 1rem;
         }
         
         .compliance-header p {
-            color: #666;
+            color: var(--text-light);
             font-size: 1rem;
         }
         
         .compliance-section {
-            background: #fff;
+            background: var(--pure-white);
+            border-radius: 12px;
             padding: 2rem;
             margin-bottom: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 20px var(--shadow);
         }
         
         .compliance-section h2 {
-            color: #1a3a5c;
+            color: var(--klein-blue);
             font-size: 1.4rem;
+            font-weight: 300;
             margin-bottom: 1.5rem;
             padding-bottom: 0.5rem;
-            border-bottom: 1px solid #e0e0e0;
+            border-bottom: 1px solid var(--border-light);
         }
         
         .compliance-section h3 {
-            color: #2c5282;
+            color: var(--sky-blue);
             font-size: 1.1rem;
+            font-weight: 400;
             margin: 1.5rem 0 1rem 0;
         }
         
         .compliance-section h4 {
-            color: #4a5568;
+            color: var(--text-dark);
             font-size: 1rem;
+            font-weight: 500;
             margin: 1.2rem 0 0.8rem 0;
-            font-weight: 600;
         }
         
         .compliance-section p {
             margin-bottom: 1rem;
             text-align: justify;
+            line-height: 1.8;
         }
         
-        .compliance-section ul {
+        .compliance-section ul,
+        .compliance-section ol {
             margin-left: 1.5rem;
             margin-bottom: 1rem;
         }
         
         .compliance-section li {
             margin-bottom: 0.5rem;
-        }
-        
-        .compliance-section ol {
-            margin-left: 1.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .compliance-section ol li {
-            margin-bottom: 0.5rem;
+            line-height: 1.7;
         }
         
         .highlight-box {
-            background: #f0f4f8;
-            border-left: 4px solid #1a3a5c;
+            background: var(--light-blue);
+            border-left: 4px solid var(--klein-blue);
             padding: 1.5rem;
             margin: 1.5rem 0;
             border-radius: 0 8px 8px 0;
         }
         
-        .warning-box {
-            background: #fff8e6;
-            border-left: 4px solid #f59e0b;
+        .warning-box-custom {
+            background: linear-gradient(135deg, #FFF3E0, #FFEBEE);
+            border-left: 4px solid #FF5722;
             padding: 1.5rem;
             margin: 1.5rem 0;
             border-radius: 0 8px 8px 0;
@@ -125,24 +119,25 @@
         }
         
         .contact-info {
-            background: #f8f9fa;
+            background: var(--light-gray);
             padding: 1.5rem;
             border-radius: 8px;
             margin-top: 1rem;
         }
         
         .contact-info a {
-            color: #1a3a5c;
+            color: var(--sky-blue);
             text-decoration: none;
+            transition: color 0.3s ease;
         }
         
         .contact-info a:hover {
-            text-decoration: underline;
+            color: var(--coral-pink);
         }
         
         .update-time {
             text-align: right;
-            color: #888;
+            color: var(--text-light);
             font-size: 0.9rem;
             margin-top: 2rem;
         }
@@ -150,41 +145,32 @@
         .back-link {
             display: inline-block;
             margin-bottom: 2rem;
-            color: #1a3a5c;
+            color: var(--sky-blue);
             text-decoration: none;
             padding: 0.5rem 1rem;
-            border: 1px solid #1a3a5c;
-            border-radius: 4px;
+            border: 1px solid var(--sky-blue);
+            border-radius: 20px;
             transition: all 0.3s ease;
         }
         
         .back-link:hover {
-            background: #1a3a5c;
-            color: #fff;
-        }
-        
-        footer {
-            text-align: center;
-            padding: 2rem;
-            background: #1a3a5c;
-            color: #fff;
-            margin-top: 3rem;
-        }
-        
-        footer a {
-            color: #fff;
-            text-decoration: none;
+            background: var(--sky-blue);
+            color: var(--pure-white);
         }
         
         .legal-tag {
             display: inline-block;
-            background: #e0e7ff;
-            color: #3730a3;
+            background: var(--light-blue);
+            color: var(--klein-blue);
             padding: 0.2rem 0.6rem;
-            border-radius: 4px;
+            border-radius: 20px;
             font-size: 0.85rem;
             margin-right: 0.5rem;
             margin-bottom: 0.5rem;
+        }
+        
+        footer p {
+            color: var(--text-light);
         }
         
         @media (max-width: 768px) {
@@ -199,357 +185,373 @@
             .compliance-header h1 {
                 font-size: 1.6rem;
             }
+            
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="compliance-container">
-        <a href="/" class="back-link">← 返回主页</a>
-        
-        <div class="compliance-header">
-            <h1>合规声明与免责条款</h1>
-            <p>星语铭 (engrave.ren) 非营利性人文记忆存档平台</p>
-            <div style="margin-top: 1rem;">
-                <span class="legal-tag">非营利</span>
-                <span class="legal-tag">人文纪念</span>
-                <span class="legal-tag">非商业</span>
-                <span class="legal-tag">非宗教</span>
-                <span class="legal-tag">非医疗</span>
-                <span class="legal-tag">非法律建议</span>
-            </div>
-        </div>
-        
-        <!-- ⚠️ 重要提示 -->
-        <div class="compliance-section">
-            <div class="critical-box">
-                <strong>⚠️ 重要提示：</strong> 本页面内容为星语铭平台运营方就网站使用、内容合规、责任限制等事项作出的正式声明。访问、浏览或使用本网站，即视为您已充分阅读、理解并同意接受本声明全部条款的约束。如您不同意任何条款，请立即停止使用本网站。
-            </div>
-        </div>
-        
-        <!-- 一、平台基本信息 -->
-        <div class="compliance-section">
-            <h2>一、平台基本信息</h2>
-            <p><strong>网站名称：</strong>星语铭</p>
-            <p><strong>网站域名：</strong>engrave.ren</p>
-            <p><strong>网站性质：</strong>非营利性、非组织化、个人运营的人文记忆存档项目</p>
-            <p><strong>运营主体：</strong>星语铭纪念计划（由志愿者组成的非正式协作群体，非法人实体）</p>
-            <p><strong>技术托管：</strong>GitHub Pages（服务器位于美国，由 GitHub, Inc. 运营）</p>
-            <p><strong>域名注册商：</strong>阿里云计算有限公司（中国）</p>
-            <p><strong>域名注册局：</strong>互联网域名系统国家工程研究中心（ZDNS，中国）</p>
-            <p><strong>项目启动：</strong>2026 年</p>
-            <p><strong>服务区域：</strong>全球互联网可访问区域（主要面向中文用户）</p>
-            
-            <div class="warning-box">
-                <strong>重要说明：</strong> 本平台运营方为个人志愿者，不具备企业法人、社会组织等法律主体资格。平台所有活动均基于个人表达与人文关怀，不构成任何组织化运营行为。
-            </div>
-        </div>
-        
-        <!-- 二、法律依据与合规承诺 -->
-        <div class="compliance-section">
-            <h2>二、法律依据与合规承诺</h2>
-            
-            <h3>2.1 遵守的法律法规</h3>
-            <p>本平台在内容制作、发布、传播过程中，严格遵循以下法律法规及规范性文件（包括但不限于）：</p>
-            <ul>
-                <li>《中华人民共和国宪法》</li>
-                <li>《中华人民共和国民法典》（尤其人格权编、侵权责任编）</li>
-                <li>《中华人民共和国网络安全法》</li>
-                <li>《中华人民共和国数据安全法》</li>
-                <li>《中华人民共和国个人信息保护法》</li>
-                <li>《中华人民共和国著作权法》及实施条例</li>
-                <li>《互联网信息服务管理办法》</li>
-                <li>《互联网域名管理办法》</li>
-                <li>《网络信息内容生态治理规定》</li>
-                <li>《未成年人保护法》网络保护专章</li>
-                <li>《宗教事务条例》及相关规定</li>
-                <li>服务器所在地（美国）相关联邦及州法律</li>
+    <!-- 页眉 - 与主站一致 -->
+    <header>
+        <nav>
+            <div class="logo">星语铭</div>
+            <ul class="nav-links">
+                <li><a href="/">主页</a></li>
+                <li><a href="/about.html">关于我们</a></li>
+                <li><a href="/compliance.html">合规声明</a></li>
             </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="compliance-container">
+            <a href="/" class="back-link">← 返回主页</a>
             
-            <h3>2.2 合规承诺</h3>
-            <p>本平台郑重承诺：</p>
-            <ul>
-                <li>✅ 不制作、复制、发布、传播任何违反中国法律法规的内容</li>
-                <li>✅ 不利用本网站从事任何营利性活动</li>
-                <li>✅ 不收集、存储、使用、传输任何用户个人信息</li>
-                <li>✅ 不为任何违法活动提供技术支持或传播渠道</li>
-                <li>✅ 配合有权机关依法进行的监督检查</li>
-            </ul>
-            
-            <div class="highlight-box">
-                <strong>跨境合规说明：</strong> 本平台域名注册于中国境内注册局，技术托管于境外服务器。我们承诺在内容层面同时满足中国法律法规的实质性要求。因跨境技术架构导致的访问延迟、解析异常等问题，不属于平台违约或侵权。
-            </div>
-        </div>
-        
-        <!-- 三、内容合规声明（核心叠甲区） -->
-        <div class="compliance-section">
-            <h2>三、内容合规声明</h2>
-            
-            <h3>3.1 内容性质界定</h3>
-            <p>本平台所有内容均为<strong>人文记忆存档与个人表达</strong>，明确不属于以下类别：</p>
-            <ul>
-                <li>❌ 不属于新闻信息服务，不从事新闻采编发布</li>
-                <li>❌ 不属于网络出版服务，不提供电子书、期刊等出版物</li>
-                <li>❌ 不属于网络视听服务，不提供音视频节目制作传播</li>
-                <li>❌ 不属于互联网宗教信息服务，不传播宗教教义、开展宗教活动</li>
-                <li>❌ 不属于互联网医疗保健信息服务，不提供诊疗建议、健康咨询</li>
-                <li>❌ 不属于互联网心理咨询服务，不提供专业心理干预</li>
-                <li>❌ 不属于网络祭祀服务，不提供在线祭拜、虚拟供品等商业功能</li>
-                <li>❌ 不属于封建迷信活动，不宣扬鬼神、占卜、风水等</li>
-            </ul>
-            
-            <h3>3.2 内容来源与免责声明</h3>
-            <div class="warning-box">
-                <strong>⚠️ 内容准确性免责：</strong> 平台所有人物生平、事件描述均整理自公开渠道（新闻媒体、社交媒体、公开档案等）。运营方已尽合理注意义务进行交叉验证，但<strong>不保证内容 100% 准确、完整、及时</strong>。因信息源错误、表述歧义、理解偏差等导致的任何事实性误差，平台不承担法律责任。
-            </div>
-            <ul>
-                <li>所有引用内容均标注来源或可追溯至公开渠道</li>
-                <li>不涉及未公开的隐私信息、商业秘密、国家秘密</li>
-                <li>肖像使用遵循"合理使用"原则，用于人文纪念目的</li>
-                <li>如权利人认为使用不当，请按本声明第五节流程投诉</li>
-            </ul>
-            
-            <h3>3.3 敏感内容处理原则</h3>
-            <p>对于涉及以下主题的内容，平台采取特别审慎态度：</p>
-            <ul>
-                <li><strong>身份认同相关：</strong>尊重当事人自我认同的姓名、代称，以公开表达或亲友确认为准，不作主观评判</li>
-                <li><strong>创伤经历相关：</strong>涉及生命困境、心理创伤等内容，仅作客观记录，不渲染、不美化、不诱导</li>
-                <li><strong>争议事件相关：</strong>涉及司法案件、社会争议等内容，仅引用权威信源，不发表定性评论</li>
-                <li><strong>未成年人相关：</strong>涉及未成年人的内容，严格脱敏处理，保护其隐私与尊严</li>
-            </ul>
-            
-            <h3>3.4 内容审核机制</h3>
-            <ul>
-                <li>实行"发布前人工审核 + 发布后定期复查"双机制</li>
-                <li>审核标准书面化，审核记录存档备查</li>
-                <li>建立内容下架快速响应流程</li>
-                <li>如收到监管部门书面通知要求删除内容，将在 24 小时内执行</li>
-            </ul>
-        </div>
-        
-        <!-- 四、用户权益与平台责任限制 -->
-        <div class="compliance-section">
-            <h2>四、用户权益与平台责任限制</h2>
-            
-            <h3>4.1 用户访问即同意</h3>
-            <p>您访问、浏览、使用本网站的任何行为，即视为您：</p>
-            <ul>
-                <li>已年满 18 周岁，或已在监护人陪同下访问</li>
-                <li>已充分阅读并同意本声明全部条款</li>
-                <li>理解并接受平台内容的非专业性、非权威性</li>
-                <li>自愿承担因访问本网站可能产生的情绪波动等风险</li>
-            </ul>
-            
-            <h3>4.2 隐私保护承诺</h3>
-            <div class="highlight-box">
-                <strong>零数据收集承诺：</strong> 本平台为纯静态网站，<u>不设置</u>用户注册、登录、评论（已移除）、表单提交等功能；<u>不接入</u>任何第三方统计、广告、追踪代码；<u>不记录</u>您的 IP 地址、设备信息、浏览路径、搜索内容。您的访问行为完全匿名。
+            <div class="compliance-header">
+                <h1>合规声明与免责条款</h1>
+                <p>星语铭 (engrave.ren) 非营利性人文记忆存档平台</p>
+                <div style="margin-top: 1rem;">
+                    <span class="legal-tag">非营利</span>
+                    <span class="legal-tag">人文纪念</span>
+                    <span class="legal-tag">非商业</span>
+                    <span class="legal-tag">非宗教</span>
+                    <span class="legal-tag">非医疗</span>
+                    <span class="legal-tag">非法律建议</span>
+                </div>
             </div>
             
-            <h3>4.3 逝者及家属权益保护</h3>
-            <ul>
-                <li>尊重逝者人格尊严，不以娱乐化、商业化方式使用其信息</li>
-                <li>姓名、肖像、生平的使用以"人文纪念"为唯一目的</li>
-                <li>如逝者近亲属提出删除请求，经身份核实后将优先处理</li>
-                <li>不对逝者生前行为进行道德审判或法律定性</li>
-            </ul>
-            
-            <h3>4.4 平台责任限制（重要免责）</h3>
-            <div class="critical-box">
-                <strong>⚠️ 责任限制声明：</strong> 在法律法规允许的最大范围内，星语铭运营方就本网站相关事项声明如下：
-            </div>
-            <ul>
-                <li><strong>不保证服务连续性：</strong> 因域名政策、服务器故障、网络攻击、不可抗力等导致的服务中断、数据丢失，平台不承担赔偿责任</li>
-                <li><strong>不保证内容适用性：</strong> 平台内容仅供参考，不构成法律、医疗、心理等专业建议。因依赖本站内容产生的任何决策风险，由用户自行承担</li>
-                <li><strong>不承担间接损失：</strong> 无论因何种原因导致的利润损失、数据丢失、商誉损害等间接损失，平台均不承担责任</li>
-                <li><strong>责任上限：</strong> 如平台被认定需承担责任，赔偿上限不超过您为访问本网站直接支付的费用（本平台免费，故上限为 0 元）</li>
-            </ul>
-        </div>
-        
-        <!-- 五、知识产权与侵权投诉 -->
-        <div class="compliance-section">
-            <h2>五、知识产权与侵权投诉</h2>
-            
-            <h3>5.1 平台原创内容许可</h3>
-            <p>本平台原创内容（页面设计、文字整理、图标等）采用知识共享许可：</p>
-            <ul>
-                <li><strong>许可协议：</strong>CC BY-NC-SA 4.0（署名 - 非商业性使用 - 相同方式共享）</li>
-                <li><strong>允许：</strong>非商业性复制、传播、改编</li>
-                <li><strong>要求：</strong>署名"来源：星语铭 (engrave.ren)"，改编内容采用相同许可</li>
-                <li><strong>禁止：</strong>商业使用、去除署名、添加额外限制</li>
-            </ul>
-            
-            <h3>5.2 第三方内容使用声明</h3>
-            <ul>
-                <li>引用新闻、图片等内容，版权归原作者所有</li>
-                <li>使用目的限于介绍、评论、说明问题，主张"合理使用"抗辩</li>
-                <li>如权利人认为超出合理使用范围，请按以下流程投诉</li>
-            </ul>
-            
-            <h3>5.3 侵权投诉流程（严格版）</h3>
-            <div class="contact-info">
-                <p><strong>投诉邮箱：</strong><a href="mailto:engraveren@outlook.com">engraveren@outlook.com</a></p>
-                <p><strong>邮件标题：</strong>【侵权投诉 - 法律函】+ 涉及内容 URL</p>
-                <p><strong>必需材料（缺一不可）：</strong></p>
-                <ol>
-                    <li>投诉人身份证明：个人需身份证正反面扫描件；组织需营业执照 + 法定代表人身份证</li>
-                    <li>权属证明：著作权登记证书、首次发表证明、授权链条文件等</li>
-                    <li>侵权链接：精确到具体页面 URL，非网站首页</li>
-                    <li>侵权说明：逐项指出侵权内容、侵权事实、法律依据</li>
-                    <li>联系方式：有效电话 + 邮箱 + 通讯地址</li>
-                    <li>承诺声明：手写签名或电子签章的"投诉内容真实"承诺书</li>
-                </ol>
-                <p><strong>处理时限：</strong> 收到完整材料后 48 小时内形式审查，7 个工作日内实质处理</p>
-                <p><strong>处理结果：</strong> 删除/修改/补充署名/书面回复说明</p>
+            <!-- ⚠️ 重要提示 -->
+            <div class="compliance-section">
+                <div class="critical-box">
+                    <strong>⚠️ 重要提示：</strong> 本页面内容为星语铭平台运营方就网站使用、内容合规、责任限制等事项作出的正式声明。访问、浏览或使用本网站，即视为您已充分阅读、理解并同意接受本声明全部条款的约束。如您不同意任何条款，请立即停止使用本网站。
+                </div>
             </div>
             
-            <div class="warning-box">
-                <strong>恶意投诉警示：</strong> 如经核实投诉材料虚假、恶意或滥用权利，平台保留向有关部门举报、追究法律责任的权利。因恶意投诉导致的内容下架损失，投诉人应承担赔偿责任。
-            </div>
-        </div>
-        
-        <!-- 六、数据安全与跨境传输 -->
-        <div class="compliance-section">
-            <h2>六、数据安全与跨境传输</h2>
-            
-            <h3>6.1 数据存储架构</h3>
-            <ul>
-                <li>网站内容：托管于 GitHub Pages（美国），公开静态文件</li>
-                <li>代码仓库：GitHub.com（美国），版本管理，公开可见</li>
-                <li>无数据库：不存储用户数据、访问日志、交互记录</li>
-                <li>本地备份：运营方定期导出静态文件，加密存储于个人设备</li>
-            </ul>
-            
-            <h3>6.2 数据传输安全</h3>
-            <ul>
-                <li>全站强制 HTTPS，TLS 1.2+ 加密传输</li>
-                <li>不设置 Cookie，不使用 LocalStorage 存储用户信息</li>
-                <li>搜索功能为纯前端 JavaScript 实现，查询词不离开用户设备</li>
-            </ul>
-            
-            <h3>6.3 数据跨境说明</h3>
-            <div class="highlight-box">
-                <strong>跨境合规声明：</strong> 因技术托管位于境外，网站内容在传输过程中可能经过境外节点。但本平台<u>不收集</u>中国境内用户个人信息，<u>不涉及</u>《数据安全法》《个人信息保护法》规定的数据出境安全评估、标准合同、认证等情形。用户访问本网站系其自主行为，相关跨境传输风险由用户自行承担。
-            </div>
-        </div>
-        
-        <!-- 七、未成年人保护特别条款 -->
-        <div class="compliance-section">
-            <h2>七、未成年人保护特别条款</h2>
-            <ul>
-                <li>本平台部分内容涉及生命、死亡、创伤等沉重主题，可能不适合未成年人独立浏览</li>
-                <li><strong>强烈建议：</strong>18 周岁以下用户在监护人陪同下访问，监护人应预先评估内容适宜性</li>
-                <li>平台不提供针对未成年人的个性化内容推荐</li>
-                <li>如发现未成年人单独访问且可能受到不良影响，监护人可联系我们请求协助</li>
-                <li>平台已提供心理援助资源，供需要帮助的用户（含未成年人）使用</li>
-            </ul>
-        </div>
-        
-        <!-- 八、不可抗力与政策风险 -->
-        <div class="compliance-section">
-            <h2>八、不可抗力与政策风险</h2>
-            
-            <h3>8.1 不可抗力定义</h3>
-            <p>本平台所指不可抗力包括但不限于：</p>
-            <ul>
-                <li>自然灾害：地震、洪水、火灾等</li>
-                <li>社会事件：战争、动乱、罢工、疫情管控等</li>
-                <li>技术故障：服务器宕机、DNS 污染、CDN 异常、代码漏洞等</li>
-                <li>政策调整：域名管理政策变化、内容监管要求更新、跨境数据规则变动等</li>
-                <li>第三方行为：注册商/注册局操作、GitHub 服务调整、网络运营商限制等</li>
-            </ul>
-            
-            <h3>8.2 政策风险特别提示</h3>
-            <div class="critical-box">
-                <strong>⚠️ 域名政策风险告知：</strong> 本平台使用.enforce.ren 域名，该顶级域由中国境内机构管理。如因内容合规、政策调整等原因，域名被注册商或注册局设置为 clientHold/serverHold 状态，导致解析中断、网站无法访问，<strong>不属于平台违约或侵权</strong>。平台将尽力通过备用域名、镜像站点等方式恢复服务，但不承诺恢复时限与成功率。
+            <!-- 一、平台基本信息 -->
+            <div class="compliance-section">
+                <h2>一、平台基本信息</h2>
+                <p><strong>网站名称：</strong>星语铭</p>
+                <p><strong>网站域名：</strong>engrave.ren</p>
+                <p><strong>网站性质：</strong>非营利性、非组织化、个人运营的人文记忆存档项目</p>
+                <p><strong>运营主体：</strong>星语铭纪念计划（由志愿者组成的非正式协作群体，非法人实体）</p>
+                <p><strong>技术托管：</strong>GitHub Pages（服务器位于美国，由 GitHub, Inc. 运营）</p>
+                <p><strong>域名注册商：</strong>阿里云计算有限公司（中国）</p>
+                <p><strong>域名注册局：</strong>互联网域名系统国家工程研究中心（ZDNS，中国）</p>
+                <p><strong>项目启动：</strong>2026 年</p>
+                <p><strong>服务区域：</strong>全球互联网可访问区域（主要面向中文用户）</p>
+                
+                <div class="warning-box-custom">
+                    <strong>重要说明：</strong> 本平台运营方为个人志愿者，不具备企业法人、社会组织等法律主体资格。平台所有活动均基于个人表达与人文关怀，不构成任何组织化运营行为。
+                </div>
             </div>
             
-            <h3>8.3 不可抗力后果</h3>
-            <ul>
-                <li>因不可抗力导致的服务中断、数据丢失、访问异常，平台不承担违约责任</li>
-                <li>平台将在合理可行范围内及时通知用户（通过 GitHub、社交媒体等渠道）</li>
-                <li>用户应自行备份重要信息，不依赖本平台作为唯一信息源</li>
-            </ul>
-        </div>
-        
-        <!-- 九、法律适用与争议解决 -->
-        <div class="compliance-section">
-            <h2>九、法律适用与争议解决</h2>
+            <!-- 二、法律依据与合规承诺 -->
+            <div class="compliance-section">
+                <h2>二、法律依据与合规承诺</h2>
+                
+                <h3>2.1 遵守的法律法规</h3>
+                <p>本平台在内容制作、发布、传播过程中，严格遵循以下法律法规及规范性文件（包括但不限于）：</p>
+                <ul>
+                    <li>《中华人民共和国宪法》</li>
+                    <li>《中华人民共和国民法典》（尤其人格权编、侵权责任编）</li>
+                    <li>《中华人民共和国网络安全法》</li>
+                    <li>《中华人民共和国数据安全法》</li>
+                    <li>《中华人民共和国个人信息保护法》</li>
+                    <li>《中华人民共和国著作权法》及实施条例</li>
+                    <li>《互联网信息服务管理办法》</li>
+                    <li>《互联网域名管理办法》</li>
+                    <li>《网络信息内容生态治理规定》</li>
+                    <li>《未成年人保护法》网络保护专章</li>
+                    <li>《宗教事务条例》及相关规定</li>
+                    <li>服务器所在地（美国）相关联邦及州法律</li>
+                </ul>
+                
+                <h3>2.2 合规承诺</h3>
+                <p>本平台郑重承诺：</p>
+                <ul>
+                    <li>✅ 不制作、复制、发布、传播任何违反中国法律法规的内容</li>
+                    <li>✅ 不利用本网站从事任何营利性活动</li>
+                    <li>✅ 不收集、存储、使用、传输任何用户个人信息</li>
+                    <li>✅ 不为任何违法活动提供技术支持或传播渠道</li>
+                    <li>✅ 配合有权机关依法进行的监督检查</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    <strong>跨境合规说明：</strong> 本平台域名注册于中国境内注册局，技术托管于境外服务器。我们承诺在内容层面同时满足中国法律法规的实质性要求。因跨境技术架构导致的访问延迟、解析异常等问题，不属于平台违约或侵权。
+                </div>
+            </div>
             
-            <h3>9.1 法律适用</h3>
-            <p>本声明的解释、效力、履行及争议解决，适用中华人民共和国大陆地区法律（不含港澳台）。如平台运营行为同时涉及境外法律，以对中国用户最有利的法律为准。</p>
+            <!-- 三、内容合规声明（核心叠甲区） -->
+            <div class="compliance-section">
+                <h2>三、内容合规声明</h2>
+                
+                <h3>3.1 内容性质界定</h3>
+                <p>本平台所有内容均为<strong>人文记忆存档与个人表达</strong>，明确不属于以下类别：</p>
+                <ul>
+                    <li>❌ 不属于新闻信息服务，不从事新闻采编发布</li>
+                    <li>❌ 不属于网络出版服务，不提供电子书、期刊等出版物</li>
+                    <li>❌ 不属于网络视听服务，不提供音视频节目制作传播</li>
+                    <li>❌ 不属于互联网宗教信息服务，不传播宗教教义、开展宗教活动</li>
+                    <li>❌ 不属于互联网医疗保健信息服务，不提供诊疗建议、健康咨询</li>
+                    <li>❌ 不属于互联网心理咨询服务，不提供专业心理干预</li>
+                    <li>❌ 不属于网络祭祀服务，不提供在线祭拜、虚拟供品等商业功能</li>
+                    <li>❌ 不属于封建迷信活动，不宣扬鬼神、占卜、风水等</li>
+                </ul>
+                
+                <h3>3.2 内容来源与免责声明</h3>
+                <div class="warning-box-custom">
+                    <strong>⚠️ 内容准确性免责：</strong> 平台所有人物生平、事件描述均整理自公开渠道（新闻媒体、社交媒体、公开档案等）。运营方已尽合理注意义务进行交叉验证，但<strong>不保证内容 100% 准确、完整、及时</strong>。因信息源错误、表述歧义、理解偏差等导致的任何事实性误差，平台不承担法律责任。
+                </div>
+                <ul>
+                    <li>所有引用内容均标注来源或可追溯至公开渠道</li>
+                    <li>不涉及未公开的隐私信息、商业秘密、国家秘密</li>
+                    <li>肖像使用遵循"合理使用"原则，用于人文纪念目的</li>
+                    <li>如权利人认为使用不当，请按本声明第五节流程投诉</li>
+                </ul>
+                
+                <h3>3.3 敏感内容处理原则</h3>
+                <p>对于涉及以下主题的内容，平台采取特别审慎态度：</p>
+                <ul>
+                    <li><strong>身份认同相关：</strong>尊重当事人自我认同的姓名、代称，以公开表达或亲友确认为准，不作主观评判</li>
+                    <li><strong>创伤经历相关：</strong>涉及生命困境、心理创伤等内容，仅作客观记录，不渲染、不美化、不诱导</li>
+                    <li><strong>争议事件相关：</strong>涉及司法案件、社会争议等内容，仅引用权威信源，不发表定性评论</li>
+                    <li><strong>未成年人相关：</strong>涉及未成年人的内容，严格脱敏处理，保护其隐私与尊严</li>
+                </ul>
+                
+                <h3>3.4 内容审核机制</h3>
+                <ul>
+                    <li>实行"发布前人工审核 + 发布后定期复查"双机制</li>
+                    <li>审核标准书面化，审核记录存档备查</li>
+                    <li>建立内容下架快速响应流程</li>
+                    <li>如收到监管部门书面通知要求删除内容，将在 24 小时内执行</li>
+                </ul>
+            </div>
             
-            <h3>9.2 争议解决</h3>
-            <ul>
-                <li><strong>友好协商：</strong> 因本声明产生的任何争议，双方应首先通过电子邮件友好协商</li>
-                <li><strong>管辖法院：</strong> 协商不成的，任何一方均可向<strong>平台运营方住所地有管辖权的人民法院</strong>提起诉讼</li>
-                <li><strong>放弃集体诉讼：</strong> 用户同意不以集体诉讼、代表人诉讼等形式主张权利</li>
-            </ul>
+            <!-- 四、用户权益与平台责任限制 -->
+            <div class="compliance-section">
+                <h2>四、用户权益与平台责任限制</h2>
+                
+                <h3>4.1 用户访问即同意</h3>
+                <p>您访问、浏览、使用本网站的任何行为，即视为您：</p>
+                <ul>
+                    <li>已年满 18 周岁，或已在监护人陪同下访问</li>
+                    <li>已充分阅读并同意本声明全部条款</li>
+                    <li>理解并接受平台内容的非专业性、非权威性</li>
+                    <li>自愿承担因访问本网站可能产生的情绪波动等风险</li>
+                </ul>
+                
+                <h3>4.2 隐私保护承诺</h3>
+                <div class="highlight-box">
+                    <strong>零数据收集承诺：</strong> 本平台为纯静态网站，<u>不设置</u>用户注册、登录、评论、表单提交等功能；<u>不接入</u>任何第三方统计、广告、追踪代码；<u>不记录</u>您的 IP 地址、设备信息、浏览路径、搜索内容。您的访问行为完全匿名。
+                </div>
+                
+                <h3>4.3 逝者及家属权益保护</h3>
+                <ul>
+                    <li>尊重逝者人格尊严，不以娱乐化、商业化方式使用其信息</li>
+                    <li>姓名、肖像、生平的使用以"人文纪念"为唯一目的</li>
+                    <li>如逝者近亲属提出删除请求，经身份核实后将优先处理</li>
+                    <li>不对逝者生前行为进行道德审判或法律定性</li>
+                </ul>
+                
+                <h3>4.4 平台责任限制（重要免责）</h3>
+                <div class="critical-box">
+                    <strong>⚠️ 责任限制声明：</strong> 在法律法规允许的最大范围内，星语铭运营方就本网站相关事项声明如下：
+                </div>
+                <ul>
+                    <li><strong>不保证服务连续性：</strong> 因域名政策、服务器故障、网络攻击、不可抗力等导致的服务中断、数据丢失，平台不承担赔偿责任</li>
+                    <li><strong>不保证内容适用性：</strong> 平台内容仅供参考，不构成法律、医疗、心理等专业建议。因依赖本站内容产生的任何决策风险，由用户自行承担</li>
+                    <li><strong>不承担间接损失：</strong> 无论因何种原因导致的利润损失、数据丢失、商誉损害等间接损失，平台均不承担责任</li>
+                    <li><strong>责任上限：</strong> 如平台被认定需承担责任，赔偿上限不超过您为访问本网站直接支付的费用（本平台免费，故上限为 0 元）</li>
+                </ul>
+            </div>
             
-            <h3>9.3 条款可分性</h3>
-            <p>如本声明任何条款被有权机关认定无效或不可执行，不影响其他条款的效力。无效条款应在法律允许范围内作最小限度修改，以实现原条款的商业目的。</p>
-        </div>
-        
-        <!-- 十、声明更新与用户同意 -->
-        <div class="compliance-section">
-            <h2>十、声明更新与用户同意</h2>
+            <!-- 五、知识产权与侵权投诉 -->
+            <div class="compliance-section">
+                <h2>五、知识产权与侵权投诉</h2>
+                
+                <h3>5.1 平台原创内容许可</h3>
+                <p>本平台原创内容（页面设计、文字整理、图标等）采用知识共享许可：</p>
+                <ul>
+                    <li><strong>许可协议：</strong>CC BY-NC-SA 4.0（署名 - 非商业性使用 - 相同方式共享）</li>
+                    <li><strong>允许：</strong>非商业性复制、传播、改编</li>
+                    <li><strong>要求：</strong>署名"来源：星语铭 (engrave.ren)"，改编内容采用相同许可</li>
+                    <li><strong>禁止：</strong>商业使用、去除署名、添加额外限制</li>
+                </ul>
+                
+                <h3>5.2 第三方内容使用声明</h3>
+                <ul>
+                    <li>引用新闻、图片等内容，版权归原作者所有</li>
+                    <li>使用目的限于介绍、评论、说明问题，主张"合理使用"抗辩</li>
+                    <li>如权利人认为超出合理使用范围，请按以下流程投诉</li>
+                </ul>
+                
+                <h3>5.3 侵权投诉流程（严格版）</h3>
+                <div class="contact-info">
+                    <p><strong>投诉邮箱：</strong><a href="mailto:engraveren@outlook.com">engraveren@outlook.com</a></p>
+                    <p><strong>邮件标题：</strong>【侵权投诉 - 法律函】+ 涉及内容 URL</p>
+                    <p><strong>必需材料（缺一不可）：</strong></p>
+                    <ol>
+                        <li>投诉人身份证明：个人需身份证正反面扫描件；组织需营业执照 + 法定代表人身份证</li>
+                        <li>权属证明：著作权登记证书、首次发表证明、授权链条文件等</li>
+                        <li>侵权链接：精确到具体页面 URL，非网站首页</li>
+                        <li>侵权说明：逐项指出侵权内容、侵权事实、法律依据</li>
+                        <li>联系方式：有效电话 + 邮箱 + 通讯地址</li>
+                        <li>承诺声明：手写签名或电子签章的"投诉内容真实"承诺书</li>
+                    </ol>
+                    <p><strong>处理时限：</strong> 收到完整材料后 48 小时内形式审查，7 个工作日内实质处理</p>
+                    <p><strong>处理结果：</strong> 删除/修改/补充署名/书面回复说明</p>
+                </div>
+                
+                <div class="warning-box-custom">
+                    <strong>恶意投诉警示：</strong> 如经核实投诉材料虚假、恶意或滥用权利，平台保留向有关部门举报、追究法律责任的权利。因恶意投诉导致的内容下架损失，投诉人应承担赔偿责任。
+                </div>
+            </div>
             
-            <h3>10.1 更新机制</h3>
-            <ul>
-                <li>平台保留随时更新本声明的权利</li>
-                <li>更新后的声明将在本网站发布，页面底部标注"最后更新时间"</li>
-                <li>重大变更（如责任限制、争议解决条款）将提前 7 日通过 GitHub 公告</li>
-                <li>继续使用网站即视为接受更新后的声明</li>
-            </ul>
+            <!-- 六、数据安全与跨境传输 -->
+            <div class="compliance-section">
+                <h2>六、数据安全与跨境传输</h2>
+                
+                <h3>6.1 数据存储架构</h3>
+                <ul>
+                    <li>网站内容：托管于 GitHub Pages（美国），公开静态文件</li>
+                    <li>代码仓库：GitHub.com（美国），版本管理，公开可见</li>
+                    <li>无数据库：不存储用户数据、访问日志、交互记录</li>
+                    <li>本地备份：运营方定期导出静态文件，加密存储于个人设备</li>
+                </ul>
+                
+                <h3>6.2 数据传输安全</h3>
+                <ul>
+                    <li>全站强制 HTTPS，TLS 1.2+ 加密传输</li>
+                    <li>不设置 Cookie，不使用 LocalStorage 存储用户信息</li>
+                    <li>搜索功能为纯前端 JavaScript 实现，查询词不离开用户设备</li>
+                </ul>
+                
+                <h3>6.3 数据跨境说明</h3>
+                <div class="highlight-box">
+                    <strong>跨境合规声明：</strong> 因技术托管位于境外，网站内容在传输过程中可能经过境外节点。但本平台<u>不收集</u>中国境内用户个人信息，<u>不涉及</u>《数据安全法》《个人信息保护法》规定的数据出境安全评估、标准合同、认证等情形。用户访问本网站系其自主行为，相关跨境传输风险由用户自行承担。
+                </div>
+            </div>
             
-            <h3>10.2 用户确认</h3>
-            <div class="highlight-box">
-                <strong>最终确认：</strong> 您再次确认：已充分阅读、理解本声明全部内容（特别是加粗、标色的免责条款）；自愿承担访问本网站的相关风险；同意平台按本声明约定运营。如您仍有疑问，请在访问前通过下方联系方式咨询。
+            <!-- 七、未成年人保护特别条款 -->
+            <div class="compliance-section">
+                <h2>七、未成年人保护特别条款</h2>
+                <ul>
+                    <li>本平台部分内容涉及生命、死亡、创伤等沉重主题，可能不适合未成年人独立浏览</li>
+                    <li><strong>强烈建议：</strong>18 周岁以下用户在监护人陪同下访问，监护人应预先评估内容适宜性</li>
+                    <li>平台不提供针对未成年人的个性化内容推荐</li>
+                    <li>如发现未成年人单独访问且可能受到不良影响，监护人可联系我们请求协助</li>
+                    <li>平台已提供心理援助资源，供需要帮助的用户（含未成年人）使用</li>
+                </ul>
+            </div>
+            
+            <!-- 八、不可抗力与政策风险 -->
+            <div class="compliance-section">
+                <h2>八、不可抗力与政策风险</h2>
+                
+                <h3>8.1 不可抗力定义</h3>
+                <p>本平台所指不可抗力包括但不限于：</p>
+                <ul>
+                    <li>自然灾害：地震、洪水、火灾等</li>
+                    <li>社会事件：战争、动乱、罢工、疫情管控等</li>
+                    <li>技术故障：服务器宕机、DNS 污染、CDN 异常、代码漏洞等</li>
+                    <li>政策调整：域名管理政策变化、内容监管要求更新、跨境数据规则变动等</li>
+                    <li>第三方行为：注册商/注册局操作、GitHub 服务调整、网络运营商限制等</li>
+                </ul>
+                
+                <h3>8.2 政策风险特别提示</h3>
+                <div class="critical-box">
+                    <strong>⚠️ 域名政策风险告知：</strong> 本平台使用 engrave.ren 域名，该顶级域由中国境内机构管理。如因内容合规、政策调整等原因，域名被注册商或注册局设置为 clientHold/serverHold 状态，导致解析中断、网站无法访问，<strong>不属于平台违约或侵权</strong>。平台将尽力通过备用域名、镜像站点等方式恢复服务，但不承诺恢复时限与成功率。
+                </div>
+                
+                <h3>8.3 不可抗力后果</h3>
+                <ul>
+                    <li>因不可抗力导致的服务中断、数据丢失、访问异常，平台不承担违约责任</li>
+                    <li>平台将在合理可行范围内及时通知用户（通过 GitHub、社交媒体等渠道）</li>
+                    <li>用户应自行备份重要信息，不依赖本平台作为唯一信息源</li>
+                </ul>
+            </div>
+            
+            <!-- 九、法律适用与争议解决 -->
+            <div class="compliance-section">
+                <h2>九、法律适用与争议解决</h2>
+                
+                <h3>9.1 法律适用</h3>
+                <p>本声明的解释、效力、履行及争议解决，适用中华人民共和国大陆地区法律（不含港澳台）。如平台运营行为同时涉及境外法律，以对中国用户最有利的法律为准。</p>
+                
+                <h3>9.2 争议解决</h3>
+                <ul>
+                    <li><strong>友好协商：</strong> 因本声明产生的任何争议，双方应首先通过电子邮件友好协商</li>
+                    <li><strong>管辖法院：</strong> 协商不成的，任何一方均可向<strong>平台运营方住所地有管辖权的人民法院</strong>提起诉讼</li>
+                    <li><strong>放弃集体诉讼：</strong> 用户同意不以集体诉讼、代表人诉讼等形式主张权利</li>
+                </ul>
+                
+                <h3>9.3 条款可分性</h3>
+                <p>如本声明任何条款被有权机关认定无效或不可执行，不影响其他条款的效力。无效条款应在法律允许范围内作最小限度修改，以实现原条款的商业目的。</p>
+            </div>
+            
+            <!-- 十、声明更新与用户同意 -->
+            <div class="compliance-section">
+                <h2>十、声明更新与用户同意</h2>
+                
+                <h3>10.1 更新机制</h3>
+                <ul>
+                    <li>平台保留随时更新本声明的权利</li>
+                    <li>更新后的声明将在本网站发布，页面底部标注"最后更新时间"</li>
+                    <li>重大变更（如责任限制、争议解决条款）将提前 7 日通过 GitHub 公告</li>
+                    <li>继续使用网站即视为接受更新后的声明</li>
+                </ul>
+                
+                <h3>10.2 用户确认</h3>
+                <div class="highlight-box">
+                    <strong>最终确认：</strong> 您再次确认：已充分阅读、理解本声明全部内容（特别是加粗、标色的免责条款）；自愿承担访问本网站的相关风险；同意平台按本声明约定运营。如您仍有疑问，请在访问前通过下方联系方式咨询。
+                </div>
+            </div>
+            
+            <!-- 十一、联系方式 -->
+            <div class="compliance-section">
+                <h2>十一、联系方式</h2>
+                <div class="contact-info">
+                    <p><strong>📧 合规事务邮箱：</strong><a href="mailto:engraveren@outlook.com">engraveren@outlook.com</a>（请注明"合规咨询"或"侵权投诉"）</p>
+                    <p><strong>📺 哔哩哔哩：</strong><a href="https://space.bilibili.com/3632300688410832" target="_blank" rel="noopener noreferrer">官方账号</a>（用于公告发布）</p>
+                    <p><strong>🐦 X (Twitter)：</strong><a href="https://x.com/engraveren" target="_blank" rel="noopener noreferrer">@engraveren</a>（用于国际用户沟通）</p>
+                    <p><strong>📂 GitHub：</strong><a href="https://github.com/NatsukoYamamura/engrave-ren" target="_blank" rel="noopener noreferrer">仓库地址</a>（用于技术协作与 Issue 提交）</p>
+                    <p><strong>⏰ 响应承诺：</strong> 合规咨询 5 个工作日内回复；侵权投诉按第五节流程处理；其他咨询视运营资源酌情回复</p>
+                    <p><strong>🔐 通信建议：</strong> 敏感内容建议使用 PGP 加密邮件，公钥可通过 GitHub 仓库获取</p>
+                </div>
+            </div>
+            
+            <!-- 十二、附录：关键术语定义 -->
+            <div class="compliance-section">
+                <h2>十二、附录：关键术语定义</h2>
+                <ul>
+                    <li><strong>"平台"/"本网站"：</strong>指域名 engrave.ren 及其所有子页面、静态资源</li>
+                    <li><strong>"运营方"/"守夜人"：</strong>指星语铭纪念计划的志愿者个人，非法人实体</li>
+                    <li><strong>"人文记忆存档"：</strong>指基于公开信息整理、以纪念为目的的非商业性内容集合</li>
+                    <li><strong>"合理使用"：</strong>指《著作权法》第二十四条规定的为介绍、评论、说明问题而适当引用他人作品的情形</li>
+                    <li><strong>"公开渠道"：</strong>指无需特殊权限、付费或授权即可访问的互联网资源</li>
+                    <li><strong>"近亲属"：</strong>指《民法典》规定的配偶、父母、子女、兄弟姐妹、祖父母、外祖父母、孙子女、外孙子女</li>
+                </ul>
+            </div>
+            
+            <p class="update-time">
+                最后更新时间：<span id="updateTime"></span> | 声明版本：v2.1（完整版）
+            </p>
+            
+            <!-- 底部再次确认 -->
+            <div class="compliance-section" style="text-align: center; background: var(--light-blue);">
+                <p style="margin: 0; font-weight: 400; color: var(--klein-blue);">🕯️ 星语铭 · 以星光为墨，以记忆为碑</p>
+                <p style="margin: 0.5rem 0 0 0; font-size: 0.9rem; color: var(--text-light);">愿所有灵魂，终将在没有黑暗的地方重逢</p>
             </div>
         </div>
-        
-        <!-- 十一、联系方式 -->
-        <div class="compliance-section">
-            <h2>十一、联系方式</h2>
-            <div class="contact-info">
-                <p><strong>📧 合规事务邮箱：</strong><a href="mailto:engraveren@outlook.com">engraveren@outlook.com</a>（请注明"合规咨询"或"侵权投诉"）</p>
-                <p><strong>📺 哔哩哔哩：</strong><a href="https://space.bilibili.com/3632300688410832" target="_blank" rel="noopener noreferrer">官方账号</a>（用于公告发布）</p>
-                <p><strong>🐦 X (Twitter)：</strong><a href="https://x.com/engraveren" target="_blank" rel="noopener noreferrer">@engraveren</a>（用于国际用户沟通）</p>
-                <p><strong>📂 GitHub：</strong><a href="https://github.com/NatsukoYamamura/engrave-ren" target="_blank" rel="noopener noreferrer">仓库地址</a>（用于技术协作与 Issue 提交）</p>
-                <p><strong>⏰ 响应承诺：</strong> 合规咨询 5 个工作日内回复；侵权投诉按第五节流程处理；其他咨询视运营资源酌情回复</p>
-                <p><strong>🔐 通信建议：</strong> 敏感内容建议使用 PGP 加密邮件，公钥可通过 GitHub 仓库获取</p>
-            </div>
-        </div>
-        
-        <!-- 十二、附录：关键术语定义 -->
-        <div class="compliance-section">
-            <h2>十二、附录：关键术语定义</h2>
-            <ul>
-                <li><strong>"平台"/"本网站"：</strong>指域名 engrave.ren 及其所有子页面、静态资源</li>
-                <li><strong>"运营方"/"守夜人"：</strong>指星语铭纪念计划的志愿者个人，非法人实体</li>
-                <li><strong>"人文记忆存档"：</strong>指基于公开信息整理、以纪念为目的的非商业性内容集合</li>
-                <li><strong>"合理使用"：</strong>指《著作权法》第二十四条规定的为介绍、评论、说明问题而适当引用他人作品的情形</li>
-                <li><strong>"公开渠道"：</strong>指无需特殊权限、付费或授权即可访问的互联网资源</li>
-                <li><strong>"近亲属"：</strong>指《民法典》规定的配偶、父母、子女、兄弟姐妹、祖父母、外祖父母、孙子女、外孙子女</li>
-            </ul>
-        </div>
-        
-        <p class="update-time">
-            最后更新时间：<span id="updateTime"></span> | 声明版本：v2.1（完整版）
-        </p>
-        
-        <!-- 底部再次确认 -->
-        <div class="compliance-section" style="text-align: center; background: #f0f4f8;">
-            <p style="margin: 0; font-weight: 500;">🕯️ 星语铭 · 以星光为墨，以记忆为碑</p>
-            <p style="margin: 0.5rem 0 0 0; font-size: 0.9rem; color: #666;">愿所有灵魂，终将在没有黑暗的地方重逢</p>
-        </div>
-    </div>
-    
+    </main>
+
+    <!-- 页脚 - 与主站一致 -->
     <footer>
         <p>&copy; <span id="year"></span> 星语铭 | 非营利性人文记忆计划</p>
-        <p style="font-size: 0.85rem; opacity: 0.9;">
-            <a href="/compliance.html">合规声明</a> | 
-            <a href="/">返回首页</a> | 
-            <a href="https://github.com/NatsukoYamamura/engrave-ren" target="_blank" rel="noopener noreferrer">GitHub</a>
-        </p>
+        <p style="font-size: 0.8rem; color: #888;">本站托管于 GitHub Pages | 域名解析由阿里云提供</p>
     </footer>
     
     <script>
@@ -566,7 +568,7 @@
         });
         
         // 控制台友好提示（仅开发者可见）
-        console.log('🕯️ 星语铭合规声明已加载 | 版本: v2.1 | 最后更新: ' + document.getElementById('updateTime').textContent);
+        console.log('🕯️ 星语铭合规声明已加载 | 版本：v2.1 | 最后更新：' + document.getElementById('updateTime').textContent);
     </script>
 </body>
 </html>
