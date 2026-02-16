@@ -5,16 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>404 - 页面未找到 - 星语铭</title>
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="preconnect://fonts.googleapis.com" href="https">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <style>
+        /* 修复布局问题 - 关键修正 */
         body {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        main {
+            flex: 1;
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 100vh;
+            padding: 2rem;
         }
     </style>
 </head>
