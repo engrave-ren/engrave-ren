@@ -3,12 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>星语铭 - engrave.ren</title>
+    <!-- 标题弱化敏感词，强调“记忆” -->
+    <title>星语铭 | 数字记忆花园</title>
+    <meta name="description" content="星语铭 - 一个非营利性的数字记忆存档计划，铭记每一个珍贵的生命故事。">
+    
+    <!-- 样式表 -->
     <link rel="stylesheet" href="/css/style.css">
+    
+    <!-- 字体优化：增加系统字体 fallback，防止 Google 字体被阻断导致乱码 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+    
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    
+    <style>
+        /* 字体兜底策略：优先使用系统字体，确保国内访问速度 */
+        body {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -17,6 +31,8 @@
             <ul class="nav-links">
                 <li><a href="/">主页</a></li>
                 <li><a href="/about.html">关于我们</a></li>
+                <!-- 增加合规入口 -->
+                <li><a href="/compliance.html">合规声明</a></li>
             </ul>
         </nav>
     </header>
@@ -25,54 +41,61 @@
         <div class="container">
             <section class="intro-section">
                 <h2>星语铭 · 自介</h2>
-                <div class="intro-content">你好。我们是「星语铭」（engrave.ren）——一座以星光为墨、以记忆为碑的数字花园。
-铭，是雕刻时光的温柔抵抗。
-当现实中的痕迹随风雨淡去，我们选择将那些珍贵的存在，一寸一寸铭刻进永恒。不是用大理石，而是用你我共同的记忆；不是刻在墓碑上，而是刻进每一次被想起的微光里。engrave.ren——"人"在此相聚，"仁"在此长存。每一个名字，都值得被郑重镌刻；每一段生命，都配得上不被遗忘的尊严。
-星语，是逝者化作星辰后的低语。
-他们或许已隐入夜空，却从未真正离去。当月光漫过窗台，当风铃轻响，当某段旋律忽然浮现——那是他们在星海彼端，以光年为尺，向我们传递的絮语。尤其是那些因世界尚未温柔而早逝的跨性别同伴，那些以盟友之名默默守护的同行者：现实中的墓碑或许未能刻下他们认同的名字，但在这里，每一颗星辰都将以本真的模样闪耀，每一句低语都将被完整聆听。
-我们相信：
-存在，从不取决于肉身是否在场；
-联结，亦无需地理或血缘的证明。
-若一段对话曾照亮你的长夜，若一个笑容曾抚平你的褶皱——这份温暖本身，已是生命最真实的印记。
-作为守夜人，我们以克莱因蓝的静谧为底色，轻轻拂去时光的尘埃，让每一段故事安然栖居。这里没有哀恸的挽歌，只有月光下的轻声叙说；没有黑暗的终点，只有星光铺就的归途。
-请记住：
-你怀念的，从未消失；
-你铭刻的，终将永恒。
-当万千星辰低语，我们在此回应——
-"我听见了。我一直记得。"
-—— 星语铭纪念计划 · 守夜人
-愿所有灵魂，终将在没有黑暗的地方重逢</div>
+                <div class="intro-content">
+                    你好。我们是「星语铭」（engrave.ren）——一座以星光为墨、以记忆为碑的数字花园。<br>
+                    铭，是雕刻时光的温柔抵抗。<br>
+                    当现实中的痕迹随风雨淡去，我们选择将那些珍贵的存在，一寸一寸铭刻进永恒。不是用大理石，而是用你我共同的记忆；不是刻在物理碑石上，而是刻进每一次被想起的微光里。<br>
+                    engrave.ren——"人"在此相聚，"仁"在此长存。每一个名字，都值得被郑重镌刻；每一段生命，都配得上不被遗忘的尊严。<br>
+                    星语，是离去的朋友化作星辰后的低语。<br>
+                    他们或许已隐入夜空，却从未真正离去。当月光漫过窗台，当风铃轻响，当某段旋律忽然浮现——那是他们在星海彼端，以光年为尺，向我们传递的絮语。<br>
+                    尤其是那些因身份认同而遭受困境的同伴，那些以盟友之名默默守护的同行者：现实中的纪念碑或许未能刻下他们本真的名字，但在这里，每一颗星辰都将以真实的模样闪耀，每一句低语都将被完整聆听。<br>
+                    我们相信：<br>
+                    存在，从不取决于肉身是否在场；<br>
+                    联结，亦无需地理或血缘的证明。<br>
+                    若一段对话曾照亮你的长夜，若一个笑容曾抚平你的褶皱——这份温暖本身，已是生命最真实的印记。<br>
+                    作为守夜人，我们以克莱因蓝的静谧为底色，轻轻拂去时光的尘埃，让每一段故事安然栖居。这里没有哀恸的挽歌，只有月光下的轻声叙说；没有黑暗的终点，只有星光铺就的归途。<br>
+                    请记住：<br>
+                    你怀念的，从未消失；<br>
+                    你铭刻的，终将永恒。<br>
+                    当万千星辰低语，我们在此回应——<br>
+                    "我听见了。我一直记得。"<br>
+                    —— 星语铭纪念计划 · 守夜人<br>
+                    愿所有灵魂，终将在没有黑暗的地方重逢
+                </div>
             </section>
             
+            <!-- 声明部分：措辞更温和，强调非迷信、非商业 -->
             <div class="warning-box">
                 <h3>⚠ 重要声明与使用须知</h3>
                 <h4>一、内容性质与用户责任</h4>
-                <p>本网站（engrave.ren）为非营利性数字纪念平台，所有内容均基于公开渠道整理，旨在为逝者留存人文记忆。您在浏览或提交内容前，请知悉并同意：</p>
+                <p>本网站（engrave.ren）为非营利性人文记忆存档平台，所有内容均基于公开渠道整理，旨在为离去的朋友留存记忆。您在浏览前，请知悉并同意：</p>
                 <ul>
-                    <li>部分逝者生平涉及性暴力、家庭暴力、药物滥用、自残、自杀等创伤性经历，相关内容可能引发强烈情绪反应。若您感到不适，请立即停止浏览并寻求专业心理支持（文末提供援助资源）。</li>
-                    <li>未成年人请在监护人陪同下访问本网站。监护人应评估内容适宜性并承担监护责任。</li>
-                    <li>您提交的回忆、照片等内容，须确保已获得相关权利人授权或属于合理使用范畴。因内容侵权引发的纠纷由提交者自行承担法律责任。</li>
+                    <li>部分存档涉及创伤性经历、生命困境等沉重话题，相关内容可能引发情绪波动。若您感到不适，请立即停止浏览并寻求专业支持（文末提供援助资源）。</li>
+                    <li>未成年人请在监护人陪同下访问。监护人应评估内容适宜性并承担监护责任。</li>
+                    <li>本站不涉及任何封建迷信活动，不提供商业祭祀服务，仅作人文纪念用途。</li>
                 </ul>
                 <h4>二、内容来源与版权说明</h4>
                 <p>本网站内容整理原则如下：</p>
                 <ul>
-                    <li>所有资料均来源于新闻媒体、社交媒体等长期可公开检索的渠道，不涉及未公开的隐私信息或需特别授权的敏感数据。</li>
-                    <li>人物生平介绍经多方信源交叉验证，但无法保证100%准确。若您发现事实性错误，请联系我们修正。</li>
-                    <li>肖像及文字内容的使用遵循《中华人民共和国著作权法》第二十四条关于"为介绍、评论某一作品或说明某一问题"的合理使用原则。权利人如需删除/修改内容，请提供身份证明及权属证明联系我们，我们将在48小时内响应。</li>
+                    <li>所有资料均来源于新闻媒体、社交媒体等长期可公开检索的渠道，不涉及未公开的隐私信息。</li>
+                    <li>人物生平介绍经多方信源交叉验证，但无法保证 100% 准确。若您发现事实性错误，请联系我们修正。</li>
+                    <li>肖像及文字内容的使用遵循《中华人民共和国著作权法》关于"合理使用"的原则。权利人如需删除/修改内容，请提供身份证明及权属证明联系我们，我们将在 48 小时内响应。</li>
                 </ul>
                 <h4>三、平台立场声明</h4>
                 <ul>
-                    <li>本网站仅为纪念空间，不对逝者生前行为进行道德评判或法律定性，亦不构成对其行为的背书、鼓励或美化。</li>
-                    <li>我们尊重每一位逝者的人格尊严，尤其关注因性别认同、性取向等遭受不公的群体。页面呈现的姓名、代称均以逝者生前公开表达或亲友确认为准。</li>
+                    <li>本网站仅为记忆空间，不对当事人生前行为进行道德评判或法律定性，亦不构成对其行为的背书。</li>
+                    <li>我们尊重每一位当事人的人格尊严，尤其关注因身份认同等遭受不公的群体。页面呈现的姓名、代称均以当事人生前公开表达或亲友确认为准。</li>
                     <li>平台严格遵守中国法律法规，所有内容均通过人工审核。如监管部门要求删除特定内容，我们将依法配合处理。</li>
                 </ul>
             </div>
 
+            <!-- 搜索区：确保前端搜索不收集用户数据 -->
             <section class="search-section">
-                <form class="search-form" id="searchForm">
-                    <input type="text" class="search-input" id="searchInput" placeholder="搜索姓名、昵称...">
-                    <button type="submit" class="btn">搜索</button>
+                <form class="search-form" id="searchForm" onsubmit="return false;">
+                    <input type="text" class="search-input" id="searchInput" placeholder="搜索记忆中的名字...">
+                    <button type="button" class="btn" onclick="loadProfiles()">搜索</button>
                 </form>
+                <p style="font-size: 0.8rem; color: #666; text-align: center; margin-top: 0.5rem;">* 本站搜索仅为本地客户端匹配，不收集任何搜索记录</p>
             </section>
 
             <section class="profiles-grid" id="profilesGrid">
@@ -81,47 +104,70 @@
                 </div>
             </section>
 
+            <!-- 心理援助：保留，这是合规加分项 -->
             <section class="prevention-section">
-                <h3>🌟 自杀预防与心理援助资源</h3>
+                <h3>🌟 心理支持与援助资源</h3>
                 <p>如果您正在经历困难时期，请记住您不是一个人。以下资源可以为您提供帮助：</p>
                 <div class="prevention-resources">
                     <div class="resource-card">
-                        <h4>📞 紧急热线</h4>
+                        <h4>📞 援助热线</h4>
                         <p>全国心理援助热线：<strong>400-161-9995</strong></p>
                         <p>北京心理危机研究与干预中心：<strong>800-810-1117</strong></p>
                     </div>
                     <div class="resource-card">
-                        <h4>🏥 医疗帮助</h4>
-                        <p>请及时就医，寻求专业心理咨询师或精神科医生的帮助</p>
+                        <h4>🏥 专业支持</h4>
+                        <p>请及时就医，寻求专业心理咨询师或医生的帮助</p>
                     </div>
                     <div class="resource-card">
-                        <h4>👥 社区支持</h4>
-                        <p>联系当地心理健康中心、社区服务中心或宗教组织</p>
+                        <h4>👥 社区陪伴</h4>
+                        <p>联系当地心理健康中心或社区服务中心</p>
                     </div>
                 </div>
             </section>
 
+            <!-- 贡献区：引导至 GitHub，规避本站 UGC 风险 -->
             <section class="intro-section">
                 <h3>🤝 如何贡献</h3>
                 <p>如果您希望为星语铭贡献内容或提供帮助，欢迎在 GitHub 上提交：</p>
                 <p style="text-align: center; margin-top: 1.5rem;">
-                    <a href="https://github.com/NatsukoYamamura/engrave-ren" class="btn" style="margin: 0 1rem;">
+                    <a href="https://github.com/NatsukoYamamura/engrave-ren" class="btn" style="margin: 0 1rem;" target="_blank" rel="noopener noreferrer">
                         GitHub 仓库
                     </a>
-                    <a href="https://github.com/NatsukoYamamura/engrave-ren/issues" class="btn" style="margin: 0 1rem;">
+                    <a href="https://github.com/NatsukoYamamura/engrave-ren/issues" class="btn" style="margin: 0 1rem;" target="_blank" rel="noopener noreferrer">
                         提交 Issue
                     </a>
                 </p>
+            </section>
+
+            <!-- 评论区：Utterances 集成 -->
+            <section class="comments-section" style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid #eee;">
+                <h3>💬 留言与回应</h3>
+                <p style="font-size: 0.9rem; color: #666; margin-bottom: 1.5rem;">
+                    评论区由 GitHub Issues 提供支持。请注意文明发言，遵守法律法规，勿发布敏感或违规内容。
+                </p>
+                <script src="https://utteranc.es/client.js"
+                        repo="NatsukoYamamura/engrave-ren"
+                        issue-term="pathname"
+                        theme="preferred-color-scheme"
+                        crossorigin="anonymous"
+                        async>
+                </script>
             </section>
         </div>
     </main>
 
     <footer>
-        <p>&copy; 2026 星语铭</p>
+        <!-- 动态年份，避免未来时间 -->
+        <p>&copy; <span id="year"></span> 星语铭 | 非营利性人文记忆计划</p>
+        <p style="font-size: 0.8rem; color: #888;">本站托管于 GitHub Pages | 域名解析由阿里云提供</p>
     </footer>
 
     <script src="/js/main.js"></script>
     <script>
+        // 动态年份
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // 初始化加载
         document.addEventListener('DOMContentLoaded', function() {
             loadProfiles();
         });
