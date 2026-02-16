@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>星语铭 | 数字记忆花园</title>
     <meta name="description" content="星语铭 - 一个非营利性的数字记忆存档计划，铭记每一个珍贵的生命故事。">
-    
+
     <!-- 样式表 -->
     <link rel="stylesheet" href="/css/style.css">
-    
+
     <!-- 字体优化：增加系统字体 fallback，防止 Google 字体被阻断导致乱码 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
-    
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    
+
     <style>
         /* 字体兜底策略：优先使用系统字体，确保国内访问速度 */
         body {
@@ -23,6 +24,7 @@
         }
     </style>
 </head>
+
 <body>
     <header>
         <nav>
@@ -61,7 +63,7 @@
                     愿所有灵魂，终将在没有黑暗的地方重逢
                 </div>
             </section>
-            
+
             <!-- 声明部分：措辞更温和，强调非迷信、非商业 -->
             <div class="warning-box">
                 <h3>⚠ 重要声明与使用须知</h3>
@@ -89,11 +91,12 @@
 
             <!-- 搜索区：确保前端搜索不收集用户数据 -->
             <section class="search-section">
-                <form class="search-form" id="searchForm" onsubmit="return false;">
-                    <input type="text" class="search-input" id="searchInput" placeholder="搜索记忆中的名字...">
-                    <button type="button" class="btn" onclick="loadProfiles()">搜索</button>
+                <form class="search-form" id="searchForm">
+                    <input type="text" class="search-input" id="searchInput" placeholder="搜索记忆中的名字、ID 或代号...">
+                    <button type="submit" class="btn">搜索</button>
                 </form>
-                <p style="font-size: 0.8rem; color: #666; text-align: center; margin-top: 0.5rem;">* 本站搜索仅为本地客户端匹配，不收集任何搜索记录</p>
+                <p style="font-size: 0.8rem; color: #666; text-align: center; margin-top: 0.5rem;">*
+                    本站搜索仅为本地客户端匹配，不收集任何搜索记录</p>
             </section>
 
             <section class="profiles-grid" id="profilesGrid">
@@ -128,10 +131,12 @@
                 <h3>🤝 如何贡献</h3>
                 <p>如果您希望为星语铭贡献内容或提供帮助，欢迎在 GitHub 上提交：</p>
                 <p style="text-align: center; margin-top: 1.5rem;">
-                    <a href="https://github.com/NatsukoYamamura/engrave-ren" class="btn" style="margin: 0 1rem;" target="_blank" rel="noopener noreferrer">
+                    <a href="https://github.com/NatsukoYamamura/engrave-ren" class="btn" style="margin: 0 1rem;"
+                        target="_blank" rel="noopener noreferrer">
                         GitHub 仓库
                     </a>
-                    <a href="https://github.com/NatsukoYamamura/engrave-ren/issues" class="btn" style="margin: 0 1rem;" target="_blank" rel="noopener noreferrer">
+                    <a href="https://github.com/NatsukoYamamura/engrave-ren/issues" class="btn" style="margin: 0 1rem;"
+                        target="_blank" rel="noopener noreferrer">
                         提交 Issue
                     </a>
                 </p>
@@ -151,9 +156,10 @@
         document.getElementById('year').textContent = new Date().getFullYear();
 
         // 初始化加载
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             loadProfiles();
         });
     </script>
 </body>
+
 </html>

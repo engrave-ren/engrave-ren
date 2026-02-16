@@ -1,10 +1,19 @@
 // 星语铭 - GitHub Pages 主页面 JavaScript
 
+// 全局缓存，避免重复请求
+let cachedProfiles = [];
+
 // 加载所有人物数据
 async function loadAllProfiles() {
+    // 如果已经加载过，直接返回缓存
+    if (cachedProfiles.length > 0) return cachedProfiles;
+
     try {
-        // 获取人物ID列表
+        console.log('正在加载人物数据...');
+        // 获取人物 ID 列表
         const listResponse = await fetch('/data/profiles.json');
+        if (!listResponse.ok) throw new Error('无法获取 profiles.json');
+        
         const profileIds = await listResponse.json();
         
         if (!Array.isArray(profileIds)) {
@@ -18,43 +27,63 @@ async function loadAllProfiles() {
             try {
                 const response = await fetch(`/data/people/${id}/info.json`);
                 if (!response.ok) {
-                    console.error(`加载 ${id} 失败: HTTP ${response.status}`);
+                    // 静默失败，不打印太多错误以免干扰
                     return null;
                 }
                 return await response.json();
             } catch (e) {
-                console.error(`加载 ${id} 失败:`, e);
                 return null;
             }
         });
         
         const profiles = await Promise.all(profilePromises);
-        return profiles.filter(p => p !== null && p.id);
+        cachedProfiles = profiles.filter(p => p !== null && p.id);
+        return cachedProfiles;
     } catch (error) {
         console.error('加载人物列表失败:', error);
         return [];
     }
 }
 
-// 加载纪念人物列表
+// 执行搜索和渲染
 async function loadProfiles() {
+    // 1. 获取数据 (使用缓存)
     const profiles = await loadAllProfiles();
     
-    // 获取搜索参数
+    // 2. 获取搜索参数
     const urlParams = new URLSearchParams(window.location.search);
     const searchQuery = urlParams.get('search') || '';
     
-    // 过滤 profiles
-    let filteredProfiles = profiles;
-    if (searchQuery) {
-        filteredProfiles = profiles.filter(p => 
-            (p.name && p.name.includes(searchQuery)) ||
-            (p.handle && p.handle.includes(searchQuery)) ||
-            (p.aliases && p.aliases.includes(searchQuery))
-        );
+    // 3. 更新搜索框显示
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput && searchInput.value !== searchQuery) {
+        searchInput.value = searchQuery;
     }
     
+    // 4. 过滤 profiles
+    const filteredProfiles = filterProfiles(profiles, searchQuery);
+    
+    // 5. 渲染
     renderProfiles(filteredProfiles);
+}
+
+// 核心过滤逻辑 (支持 ID 搜索)
+function filterProfiles(profiles, query) {
+    if (!query) return profiles;
+    
+    const lowerQuery = query.toLowerCase().trim();
+    
+    return profiles.filter(p => {
+        if (!p) return false;
+        
+        // 检查各个字段是否存在且包含搜索词 (不区分大小写)
+        const matchId = p.id && p.id.toLowerCase().includes(lowerQuery);
+        const matchName = p.name && p.name.toLowerCase().includes(lowerQuery);
+        const matchHandle = p.handle && p.handle.toLowerCase().includes(lowerQuery);
+        const matchAliases = p.aliases && p.aliases.toLowerCase().includes(lowerQuery);
+        
+        return matchId || matchName || matchHandle || matchAliases;
+    });
 }
 
 // 渲染纪念人物卡片
@@ -66,15 +95,15 @@ function renderProfiles(profiles) {
     if (profiles.length === 0) {
         profilesGrid.innerHTML = `
             <div style="grid-column: 1 / -1; text-align: center; padding: 3rem; background: var(--pure-white); border-radius: 12px; box-shadow: 0 4px 20px var(--shadow);">
-                <h3 style="color: var(--text-light); margin-bottom: 1rem;">🌸 暂无纪念人物</h3>
-                <p style="color: var(--text-light);">数据正在整理中...</p>
+                <h3 style="color: var(--text-light); margin-bottom: 1rem;">🌸 未找到相关记忆</h3>
+                <p style="color: var(--text-light);">请尝试搜索其他关键词，或数据正在整理中...</p>
             </div>
         `;
         return;
     }
     
     profilesGrid.innerHTML = profiles.map(profile => `
-        <div class="profile-card" onclick="window.location.href='/profile.html?id=${encodeURIComponent(profile.id)}'">
+        <div class="profile-card" onclick="window.location.href='/profile.html?id=${encodeURIComponent(profile.id)}'" style="cursor: pointer;">
             <img src="/data/people/${profile.id}/avatar.jpg" 
                  alt="${profile.name}" 
                  class="profile-avatar" 
@@ -97,31 +126,37 @@ function generateBio(profile) {
     return '点击查看详情';
 }
 
-// 搜索功能
+// 页面加载完成后的初始化
 document.addEventListener('DOMContentLoaded', function() {
     const searchForm = document.getElementById('searchForm');
     const searchInput = document.getElementById('searchInput');
     
-    // 恢复搜索框内容
-    const urlParams = new URLSearchParams(window.location.search);
-    const searchQuery = urlParams.get('search') || '';
-    if (searchInput) {
-        searchInput.value = searchQuery;
-    }
+    // 1. 初始化加载数据
+    loadProfiles();
     
+    // 2. 绑定搜索表单提交事件 (修复按钮无法按下问题)
     if (searchForm) {
         searchForm.addEventListener('submit', function(e) {
-            e.preventDefault();
+            e.preventDefault(); // 阻止表单默认提交刷新页面
+            
             const query = searchInput.value.trim();
+            
+            // 更新 URL 参数 (不刷新页面，但改变地址栏，方便分享)
+            const newUrl = new URL(window.location);
             if (query) {
-                window.location.href = `/?search=${encodeURIComponent(query)}`;
+                newUrl.searchParams.set('search', query);
             } else {
-                window.location.href = '/';
+                newUrl.searchParams.delete('search');
             }
+            window.history.pushState({}, '', newUrl);
+            
+            // 执行过滤和渲染
+            const filtered = filterProfiles(cachedProfiles, query);
+            renderProfiles(filtered);
         });
     }
     
-    // 添加返回顶部按钮
+    // 3. 添加返回顶部按钮
     window.addEventListener('scroll', function() {
         const scrollButton = document.getElementById('scrollToTop');
         if (!scrollButton) {
@@ -153,27 +188,27 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         const button = document.getElementById('scrollToTop');
-        if (window.pageYOffset > 300) {
-            button.style.opacity = '1';
-            button.style.visibility = 'visible';
-        } else {
-            button.style.opacity = '0';
-            button.style.visibility = 'hidden';
+        if (button) {
+            if (window.pageYOffset > 300) {
+                button.style.opacity = '1';
+                button.style.visibility = 'visible';
+            } else {
+                button.style.opacity = '0';
+                button.style.visibility = 'hidden';
+            }
         }
     });
     
-    // 键盘导航
+    // 4. 键盘导航
     document.addEventListener('keydown', function(e) {
         if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
             e.preventDefault();
-            const searchInput = document.getElementById('searchInput');
             if (searchInput) {
                 searchInput.focus();
             }
         }
         
         if (e.key === 'Escape') {
-            const searchInput = document.getElementById('searchInput');
             if (searchInput) {
                 searchInput.blur();
             }
