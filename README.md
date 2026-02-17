@@ -54,6 +54,10 @@ https://engrave.ren/
     "[网站名称](https://example.com)",
     "[B站](https://bilibili.com)",
     "[GitHub](https://github.com)"
+  ],
+  "sources": [
+    "[新闻报道](https://example.com/news)",
+    "[纪念文章](https://example.com/memorial)"
   ]
 }
 ```
@@ -68,6 +72,7 @@ https://engrave.ren/
 - `passDate` - 离开日期 (YYYY-MM-DD)
 - `summary` - 一言总结/引用（显示在首页卡片）
 - `websites` - 网站链接数组，格式：`[显示名称](链接)`
+- `sources` - 引用资料链接数组，格式：`[显示名称](链接)`
 
 ### 更新人物列表
 

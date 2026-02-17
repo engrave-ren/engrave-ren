@@ -131,10 +131,18 @@ async function renderProfile(profile, bio) {
     let websiteLinks = '';
     if (profile.websites && Array.isArray(profile.websites) && profile.websites.length > 0) {
         const linksHtml = profile.websites.map(link => {
-            // 将 [名称](链接) 转换为 <a> 标签
             return link.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" style="color: var(--sky-blue); margin: 0 0.5rem;">$1</a>');
         }).join(' ');
         websiteLinks = `<div class="profile-info-item"><strong>链接：</strong>${linksHtml}</div>`;
+    }
+    
+    // 引用资料链接
+    let sourceLinks = '';
+    if (profile.sources && Array.isArray(profile.sources) && profile.sources.length > 0) {
+        const linksHtml = profile.sources.map(link => {
+            return link.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" style="color: var(--sky-blue); margin: 0 0.5rem;">$1</a>');
+        }).join(' ');
+        sourceLinks = `<div class="profile-info-item"><strong>引用资料：</strong>${linksHtml}</div>`;
     }
     
     const content = document.getElementById('profileContent');
@@ -156,6 +164,7 @@ async function renderProfile(profile, bio) {
                 </div>
                 ${ageText ? `<div class="profile-info-item"><strong>年龄：</strong>${ageText}</div>` : ''}
                 ${websiteLinks}
+                ${sourceLinks}
             </div>
         </section>
 
