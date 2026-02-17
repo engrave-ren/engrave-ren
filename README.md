@@ -33,7 +33,7 @@ https://engrave.ren/
 
 ## 添加新人物
 
-1. 在 `data/people/` 下创建新文件夹，文件夹名称即为人物 ID
+1. 在 `data/people/` 下创建新文件夹，文件夹名称即为人物 ID（请使用全小写）
 2. 创建 `info.json` - 基本信息
 3. 创建 `bio.md` - 生平介绍（支持完整 Markdown 语法）
 4. 添加 `avatar.jpg` - 头像图片（可选）
@@ -89,7 +89,3 @@ https://engrave.ren/
 2. 进入仓库 Settings → Pages
 3. 选择 Source 为 `main` 分支
 4. 保存后即可访问
-
-## 技术支持
-
-由 [Novi的导航站](https://novihare.cn/) 提供技术支持
