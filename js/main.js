@@ -168,10 +168,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('searchInput');
     
     // 1. 初始化加载数据
-    loadProfiles();
-    
-    // 2. 渲染今日生日
-    renderBirthdays();
+    loadProfiles().then(() => {
+        // 2. 渲染今日生日（等待数据加载完成后执行）
+        renderBirthdays();
+    });
     
     // 3. 随机访问按钮
     const randomBtn = document.getElementById('randomBtn');
