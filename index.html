@@ -109,24 +109,24 @@
             <section class="search-section">
                 <div style="display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap;">
                     <button type="button" class="btn" id="randomBtn">🎲 随机访问</button>
-                    <form class="search-form" id="searchForm" style="flex: 1; min-width: 200px; max-width: 400px; display: flex;">
+                    <form class="search-form" id="searchForm"
+                        style="flex: 1; min-width: 200px; max-width: 400px; display: flex;">
                         <input type="text" class="search-input" id="searchInput" placeholder="搜索记忆中的名字、ID 或代号...">
                         <button type="submit" class="btn">搜索</button>
                     </form>
                 </div>
-                
+
                 <!-- 逝世时间范围搜索 -->
-                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; align-items: center; margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed var(--border-light);">
+                <div
+                    style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; align-items: center; margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed var(--border-light);">
                     <span style="color: var(--text-dark);">逝世时间：</span>
                     <input type="date" id="passDateFrom" class="date-input" title="开始日期">
                     <span style="color: var(--text-light);">至</span>
                     <input type="date" id="passDateTo" class="date-input" title="结束日期">
                     <button type="button" class="btn" id="filterByDateBtn">筛选</button>
-                    <button type="button" class="btn" id="clearDateFilterBtn" style="background: var(--text-light);">清除</button>
+                    <button type="button" class="btn" id="clearDateFilterBtn"
+                        style="background: var(--text-light);">清除</button>
                 </div>
-                
-                <p style="font-size: 0.8rem; color: #666; text-align: center; margin-top: 0.5rem;">*
-                   本站搜索仅为本地客户端匹配，不收集任何搜索记录</p>
             </section>
 
             <section class="profiles-grid" id="profilesGrid">
