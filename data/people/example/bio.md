@@ -1,12 +1,6 @@
----
-title: YAML Front Matter
-description: A very simple way to add structured data to a page.
----
-
 # Editor.md
 
-
-<a href="https://oschina.net">hhh</a>
+<a href="https://oschina.net">oschina</a>
 
 <img src="https://pandao.github.io/editor.md/images/logos/editormd-logo-180x180.png">
 
