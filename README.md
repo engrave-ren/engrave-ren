@@ -96,3 +96,47 @@ https://engrave.ren/
 2. 进入仓库 Settings → Pages
 3. 选择 Source 为 `main` 分支
 4. 保存后即可访问
+
+## 资源引用
+
+### 图片引用
+
+使用标准 Markdown 语法引用图片：
+
+```markdown
+![图片描述](https://raw.githubusercontent.com/engrave-ren/engrave-ren/main/data/people/[人物ID]/resources/图片文件名.jpg)
+```
+
+**示例：**
+
+```markdown
+![小咴咴](https://raw.githubusercontent.com/engrave-ren/engrave-ren/main/data/people/xiaohuihuih/resources/A3051A557A46F7B8A2490CB18B30C96F.jpg)
+```
+
+---
+
+### 视频引用
+
+使用链接方式引用视频文件：
+
+```markdown
+[视频标题](https://cdn.jsdelivr.net/gh/engrave-ren/engrave-ren@main/data/people/[人物ID]/resources/视频文件名.mp4)
+```
+
+**示例：**
+
+```markdown
+[Intermezzo Op.118 No.2](https://cdn.jsdelivr.net/gh/engrave-ren/engrave-ren@main/data/people/xiaohuihuih/resources/1be9b60535cf5d522acece8348789a9b.mp4)
+```
+
+---
+
+### 说明
+
+- **图片**：使用 `![描述](链接)` 语法，图片会直接显示在页面中
+- **视频**：使用 `[标题](链接)` 语法，点击链接可在浏览器中打开播放
+- **链接选择**：
+  - `raw.githubusercontent.com` - GitHub 原始文件链接
+  - `cdn.jsdelivr.net` - 加速 CDN 链接（推荐）
+- 将 `[人物ID]` 替换为实际的人物文件夹名称
+- 将文件名替换为实际的资源文件名
