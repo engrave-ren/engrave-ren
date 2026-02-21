@@ -39,32 +39,71 @@
     </footer>
 
     <script src="/js/profile.js"></script>
+    
     <script>
-        // 动态年份
-        document.getElementById('year').textContent = new Date().getFullYear();
+    // ========== 原有功能 ==========
+    
+    // 动态年份
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-        // 初始化加载
-        document.addEventListener('DOMContentLoaded', function() {
-            loadProfiles();
-        });
-    </script>
-    <script>
+    // 初始化加载
+    document.addEventListener('DOMContentLoaded', function() {
+        loadProfiles();
+    });
+
     // 标准化 id 参数
     const urlParams = new URLSearchParams(window.location.search);
     let id = urlParams.get('id');
 
     if (id) {
       const normalizedId = id.toLowerCase();
-
       if (id !== normalizedId) {
         window.history.replaceState({}, '', `${window.location.pathname}?id=${normalizedId}`);
       }
-
-      // 使用 normalizedId 加载用户资料
       console.log('加载用户资料:', normalizedId);
       // loadProfile(normalizedId);
     }
-  </script>
+
+    // ========== 复制时添加注释（无提示版） ==========
+    
+    document.addEventListener('copy', function(event) {
+      const selectedText = window.getSelection()?.toString().trim();
+      if (!selectedText) return;
+
+      // 排除输入框、文本域、可编辑区域
+      const activeEl = document.activeElement;
+      if (activeEl && (
+        activeEl.tagName === 'INPUT' || 
+        activeEl.tagName === 'TEXTAREA' || 
+        activeEl.isContentEditable
+      )) {
+        return;
+      }
+
+      const siteName = '星语铭';
+      const siteOrigin = window.location.origin;
+      const siteUrl = window.location.href;
+      const license = 'CC BY-NC-SA 4.0';
+      const licenseUrl = 'https://creativecommons.org/licenses/by-nc-sa/4.0/';
+
+      const footer = [
+        '',
+        '',
+        `来源：${siteName} (${siteOrigin})`,
+        `链接：${siteUrl}`,
+        `许可：${license} ${licenseUrl}`,
+        `请遵守：署名 - 非商业性使用 - 相同方式共享`
+      ].join('\n');
+
+      // 防止重复添加
+      if (selectedText.includes(`来源：${siteName}`)) {
+        return;
+      }
+
+      event.preventDefault();
+      event.clipboardData.setData('text/plain', selectedText + footer);
+    });
+</script>
 </body>
 </html>
 
