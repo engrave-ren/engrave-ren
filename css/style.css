@@ -191,41 +191,6 @@ nav {
     border-color: var(--sky-blue);
 }
 
-/* ⭐ 首字符筛选按钮样式 ⭐ */
-.char-filter-btn {
-    padding: 6px 12px;
-    background: var(--pure-white);
-    border: 1px solid var(--border-light);
-    border-radius: 6px;
-    font-size: 0.85rem;
-    color: var(--text-dark);
-    cursor: pointer;
-    transition: all 0.2s ease;
-    min-width: 32px;
-    text-align: center;
-    user-select: none;
-}
-
-.char-filter-btn:hover {
-    background: var(--light-blue);
-    border-color: var(--sky-blue);
-    transform: translateY(-1px);
-}
-
-.char-filter-btn.active {
-    background: linear-gradient(45deg, var(--sky-blue), var(--coral-pink));
-    color: var(--pure-white);
-    border-color: transparent;
-    font-weight: 500;
-    box-shadow: 0 2px 8px rgba(135, 206, 235, 0.4);
-}
-
-.char-filter-btn:disabled {
-    opacity: 0.4;
-    cursor: not-allowed;
-    transform: none;
-}
-
 /* Profile Cards Grid */
 .profiles-grid {
     display: grid;
@@ -358,12 +323,6 @@ footer a:hover {
     .prevention-resources {
         flex-direction: column;
     }
-
-    .char-filter-buttons {
-        max-height: 120px;
-        overflow-y: auto;
-        padding: 0.3rem 0;
-    }
 }
 
 /* Profile Page Styles */
@@ -460,6 +419,8 @@ footer a:hover {
 }
 
 /* ========== Markdown 内容样式（GitHub 风格）========== */
+
+/* 引用块 */
 .profile-bio-section blockquote {
     border-left: 4px solid var(--coral-pink);
     background: var(--light-gray);
@@ -482,6 +443,7 @@ footer a:hover {
     margin-bottom: 0;
 }
 
+/* 代码块 */
 .profile-bio-section pre {
     background: #f6f8fa;
     border: 1px solid var(--border-light);
@@ -508,6 +470,7 @@ footer a:hover {
     font-size: 100%;
 }
 
+/* 表格 */
 .profile-bio-section table {
     border-collapse: collapse;
     width: 100%;
@@ -533,6 +496,7 @@ footer a:hover {
     background: var(--light-gray);
 }
 
+/* 列表 */
 .profile-bio-section ul,
 .profile-bio-section ol {
     padding-left: 2em;
@@ -553,6 +517,7 @@ footer a:hover {
     list-style-type: decimal;
 }
 
+/* 标题 */
 .profile-bio-section h1,
 .profile-bio-section h2,
 .profile-bio-section h3,
@@ -582,6 +547,7 @@ footer a:hover {
     font-size: 1.25em;
 }
 
+/* 链接 */
 .profile-bio-section a {
     color: var(--sky-blue);
     text-decoration: none;
@@ -593,6 +559,7 @@ footer a:hover {
     border-bottom-color: var(--coral-pink);
 }
 
+/* 图片 */
 .profile-bio-section img {
     max-width: 100%;
     height: auto;
@@ -601,16 +568,19 @@ footer a:hover {
     box-shadow: 0 2px 8px var(--shadow);
 }
 
+/* 水平线 */
 .profile-bio-section hr {
     border: none;
     border-top: 2px solid var(--border-light);
     margin: 2em 0;
 }
 
+/* 任务列表 */
 .profile-bio-section input[type="checkbox"] {
     margin-right: 0.5em;
 }
 
+/* 强调 */
 .profile-bio-section strong {
     font-weight: 600;
     color: var(--klein-blue);
