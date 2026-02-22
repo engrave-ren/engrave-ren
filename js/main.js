@@ -8,27 +8,26 @@ let passDateFilter = { from: null, to: null };
 let currentCharFilter = 'special'; // ⭐ 默认只显示特殊字符 &
 
 // 字符分类定义（仅英文/数字/特殊字符）
-const SPECIAL_CHARS = '&@#$%';
+const SPECIAL_CHARS = '&@$%';
 const LETTERS = 'abcdefghijklmnopqrstuvwxyz';
 const NUMBERS = '0123456789';
 
 /**
- * 提取 profile 的首字符分类
- * 优先级: handle > id > name
+ * 提取 profile.id 的首字符分类
+ * 仅使用 id 字段，忽略 handle/name
  */
 function getFirstChar(profile) {
-    if (!profile) return 'other';
-
-    const text = (profile.handle || profile.id || profile.name || '').toString().trim().toLowerCase();
-    if (!text) return 'other';
-
-    const first = text.charAt(0);
-
+    if (!profile || !profile.id) return 'other';
+    
+    // 转小写并取 id 的首字符
+    const first = profile.id.toString().trim().toLowerCase().charAt(0);
+    
+    // 分类判断
     if (SPECIAL_CHARS.includes(first)) return 'special';
     if (LETTERS.includes(first)) return first;      // 返回具体字母 a-z
     if (NUMBERS.includes(first)) return 'numbers';
-
-    return 'other'; // 中文或其他
+    
+    return 'other'; // 中文或其他字符
 }
 
 /**
