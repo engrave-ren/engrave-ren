@@ -10,7 +10,7 @@
     <!-- 样式表 -->
     <link rel="stylesheet" href="/css/style.css">
 
-    <!-- 字体优化：增加系统字体 fallback，防止 Google 字体被阻断导致乱码 -->
+    <!-- 字体优化 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
@@ -18,7 +18,6 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
     <style>
-        /* 字体兜底策略：优先使用系统字体，确保国内访问速度 */
         body {
             font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
         }
@@ -64,7 +63,6 @@
                 </div>
             </section>
 
-            <!-- 声明部分：措辞更温和，强调非迷信、非商业 -->
             <div class="warning-box">
                 <h3>⚠ 重要声明与使用须知</h3>
                 <h4>一、内容性质与用户责任</h4>
@@ -105,7 +103,7 @@
                 </div>
             </section>
 
-            <!-- 搜索区：确保前端搜索不收集用户数据 -->
+            <!-- 搜索区 + 首字符筛选器 -->
             <section class="search-section">
                 <div style="display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap;">
                     <button type="button" class="btn" id="randomBtn">🎲 随机访问</button>
@@ -127,15 +125,28 @@
                     <button type="button" class="btn" id="clearDateFilterBtn"
                         style="background: var(--text-light);">清除</button>
                 </div>
+
+                <!-- ⭐ 首字符筛选器（目录）⭐ -->
+                <div class="char-filter-section"
+                    style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px dashed var(--border-light);">
+                    <div style="text-align: center; margin-bottom: 0.8rem; color: var(--text-dark);">
+                        <small>📚 按 ID/名字首字符浏览</small>
+                    </div>
+                    <div class="char-filter-buttons" id="charFilterContainer"
+                        style="display: flex; flex-wrap: wrap; gap: 0.4rem; justify-content: center;">
+                        <!-- 按钮由 JS 动态生成 -->
+                    </div>
+                </div>
             </section>
 
+            <!-- 人物卡片展示区 -->
             <section class="profiles-grid" id="profilesGrid">
                 <div style="grid-column: 1 / -1; text-align: center; padding: 3rem;">
                     <p style="color: var(--text-light);">加载中...</p>
                 </div>
             </section>
 
-            <!-- 心理援助：保留，这是合规加分项 -->
+            <!-- 心理援助 -->
             <section class="prevention-section">
                 <h3>🌟 心理支持与援助资源</h3>
                 <p>如果您正在经历困难时期，请记住您不是一个人。以下资源可以为您提供帮助：</p>
@@ -156,7 +167,7 @@
                 </div>
             </section>
 
-            <!-- 贡献区：引导至 GitHub，规避本站 UGC 风险 -->
+            <!-- 贡献区 -->
             <section class="intro-section">
                 <h3>🤝 如何贡献</h3>
                 <p>如果您希望为星语铭贡献内容或提供帮助，欢迎在 GitHub 上提交：</p>
@@ -175,17 +186,13 @@
     </main>
 
     <footer>
-        <!-- 动态年份，避免未来时间 -->
         <p>&copy; <span id="year"></span> 星语铭 | 非营利性人文记忆计划</p>
         <p style="font-size: 0.8rem; color: #888;">本站托管于 GitHub Pages | 域名解析由阿里云提供</p>
     </footer>
 
     <script src="/js/main.js"></script>
     <script>
-        // 动态年份
         document.getElementById('year').textContent = new Date().getFullYear();
-
-        // 初始化加载
         document.addEventListener('DOMContentLoaded', function () {
             loadProfiles();
         });
